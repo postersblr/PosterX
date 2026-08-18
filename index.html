@@ -5,7 +5,193 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>POSTERSBLR | Premium Posters</title>
+/* ORDER BOX */
 
+.order-overlay {
+    position: fixed;
+    inset: 0;
+
+    background: rgba(0,0,0,0.45);
+
+    display: none;
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+
+    z-index: 1000;
+
+    backdrop-filter: blur(5px);
+}
+
+.order-overlay.show {
+    display: flex;
+}
+
+.order-box {
+    width: 100%;
+    max-width: 420px;
+
+    background: #fff;
+
+    border-radius: 24px;
+
+    padding: 30px;
+
+    position: relative;
+
+    box-shadow: 0 25px 70px rgba(0,0,0,0.25);
+
+    animation: orderAppear 0.2s ease;
+}
+
+@keyframes orderAppear {
+
+    from {
+        opacity: 0;
+        transform: translateY(15px) scale(0.97);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+
+}
+
+.close-order {
+    position: absolute;
+
+    top: 15px;
+    right: 18px;
+
+    border: none;
+    background: #f1f0eb;
+
+    width: 35px;
+    height: 35px;
+
+    border-radius: 50%;
+
+    font-size: 22px;
+
+    cursor: pointer;
+}
+
+.order-box h2 {
+    font-size: 28px;
+    margin-bottom: 15px;
+}
+
+.selected-poster {
+    font-size: 20px;
+    font-weight: 800;
+
+    margin-bottom: 7px;
+}
+
+.order-price {
+    font-weight: 700;
+    color: #e87535;
+
+    margin-bottom: 5px;
+}
+
+.poster-size {
+    color: #666;
+    font-size: 14px;
+
+    margin-bottom: 25px;
+}
+
+.quantity-area {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 15px 0;
+
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+}
+
+.quantity-area > span {
+    font-weight: 700;
+}
+
+.quantity-control {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.quantity-control button {
+    width: 35px;
+    height: 35px;
+
+    border: none;
+    border-radius: 50%;
+
+    background: #171717;
+    color: white;
+
+    font-size: 20px;
+
+    cursor: pointer;
+}
+
+#quantity {
+    font-weight: 800;
+    min-width: 20px;
+    text-align: center;
+}
+
+.total {
+    font-size: 20px;
+    font-weight: 900;
+
+    margin: 22px 0;
+}
+
+.whatsapp-order {
+    width: 100%;
+
+    padding: 14px;
+
+    border: none;
+    border-radius: 12px;
+
+    background: #171717;
+    color: white;
+
+    font-weight: 800;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.whatsapp-order:hover {
+    background: #e87535;
+    transform: translateY(-2px);
+}
+
+.cancel-order {
+    width: 100%;
+
+    margin-top: 10px;
+
+    padding: 12px;
+
+    border: none;
+    background: transparent;
+
+    color: #666;
+
+    font-weight: 700;
+
+    cursor: pointer;
+}
 <style>
 
 * {
@@ -667,9 +853,71 @@ src="motivation2.jpg">
 
 </section>
 
+<!-- ORDER BOX -->
 
+<div class="order-overlay" id="orderOverlay">
+
+    <div class="order-box">
+
+        <button class="close-order" onclick="closeOrder()">×</button>
+
+        <h2>Order Poster</h2>
+
+        <p class="selected-poster" id="selectedPoster">
+            Poster Name
+        </p>
+
+        <p class="order-price">₹29 each</p>
+
+        <p class="poster-size">
+            Size: 44.5 × 30 cm
+        </p>
+
+        <div class="quantity-area">
+
+            <span>Quantity</span>
+
+            <div class="quantity-control">
+
+                <button onclick="changeQuantity(-1)">
+                    −
+                </button>
+
+                <span id="quantity">1</span>
+
+                <button onclick="changeQuantity(1)">
+                    +
+                </button>
+
+            </div>
+
+        </div>
+
+        <div class="total">
+            Total: ₹<span id="totalPrice">29</span>
+        </div>
+
+        <button
+            class="whatsapp-order"
+            onclick="orderOnWhatsApp()">
+
+            ORDER ON WHATSAPP
+
+        </button>
+
+        <button
+            class="cancel-order"
+            onclick="closeOrder()">
+
+            CANCEL
+
+        </button>
+
+    </div>
+
+</div>
 <!-- ABOUT -->
-
+    
 <section class="about" id="about">
 
     <h2>POSTERSBLR</h2>
@@ -751,22 +999,71 @@ function filterProducts(category, button) {
 
 /* BUY BUTTON */
 
+let selectedProduct = "";
+let quantity = 1;
+
 function buyProduct(productName) {
 
+    selectedProduct = productName;
+    quantity = 1;
+
+    document.getElementById("selectedPoster").textContent =
+        productName;
+
+    updateOrderTotal();
+
+    document.getElementById("orderOverlay")
+        .classList.add("show");
+}
+
+
+function changeQuantity(amount) {
+
+    quantity += amount;
+
+    if (quantity < 1) {
+        quantity = 1;
+    }
+
+    updateOrderTotal();
+}
+
+
+function updateOrderTotal() {
+
+    const total = quantity * 29;
+
+    document.getElementById("quantity").textContent =
+        quantity;
+
+    document.getElementById("totalPrice").textContent =
+        total;
+}
+
+
+function closeOrder() {
+
+    document.getElementById("orderOverlay")
+        .classList.remove("show");
+}
+
+
+function orderOnWhatsApp() {
+
     const phoneNumber = "916366788554";
+
+    const total = quantity * 29;
 
     const message =
 `Hi POSTERSBLR!
 
-I'd like to order:
+I'd like to place an order.
 
-Poster: ${productName}
-
-Size: 45cm × 30cm
-
-Price: ₹29
-
-Quantity: 1
+Poster: ${selectedProduct}
+Size: 44.5 × 30 cm
+Quantity: ${quantity}
+Price per poster: ₹29
+Total: ₹${total}
 
 Please let me know the delivery details.`;
 
@@ -777,7 +1074,6 @@ Please let me know the delivery details.`;
         encodeURIComponent(message);
 
     window.location.href = whatsappURL;
-
 }
 
 
