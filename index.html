@@ -753,11 +753,20 @@ function filterProducts(category, button) {
 
 function buyProduct(productName) {
 
-    alert(
-        "You selected: " +
+    const phoneNumber = "916366788554";
+
+    const message =
+        "Hi! I want to order the " +
         productName +
-        "\n\nContact us to place your order!"
-    );
+        " poster from POSTERSBLR.";
+
+    const whatsappURL =
+        "https://wa.me/" +
+        phoneNumber +
+        "?text=" +
+        encodeURIComponent(message);
+
+    window.open(whatsappURL, "_blank");
 
 }
 
