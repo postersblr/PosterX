@@ -2028,41 +2028,415 @@ function changeQuantity(amount) {
 
 /* =========================
    UPDATE TOTAL
+<script>
+
+/* =========================
+   CATEGORY FILTER
 ========================= */
 
-function updateOrderTotal() {
+function filterProducts(category, button) {
 
-    const total =
-        quantity * 29;
+    const products = document.querySelectorAll(".product");
+    const buttons = document.querySelectorAll(".category-buttons button");
+
+    buttons.forEach(btn => btn.classList.remove("active"));
+
+    button.classList.add("active");
+
+    products.forEach(product => {
+
+        if (category === "all" ||
+            product.dataset.category === category) {
+
+            product.style.display = "block";
+
+        } else {
+
+            product.style.display = "none";
+
+        }
+
+    });
+}
 
 
-    document.getElementById(
-        "quantity"
-    ).textContent = quantity;
+/* =========================
+   POSTER PREVIEW
+========================= */
+
+function openPreview(imageSrc, posterName) {
+
+    const overlay = document.getElementById("previewOverlay");
+    const image = document.getElementById("previewImage");
+
+    if (!overlay || !image) return;
+
+    image.src = imageSrc;
+    image.alt = posterName;
+
+    overlay.classList.add("show");
+}
 
 
-    document.getElementById(
-        "totalPrice"
-    ).textContent = total;
+function closePreview(event) {
+
+    const overlay = document.getElementById("previewOverlay");
+
+    if (!overlay) return;
+
+    if (!event || event.target === overlay) {
+
+        overlay.classList.remove("show");
+
+    }
+}
+
+
+/* =========================
+   CART
+========================= */
+
+let cart = [];
+
+
+function addToCart(productName, imageSrc) {
+
+    const existingItem = cart.find(
+        item => item.name === productName
+    );
+
+    if (existingItem) {
+
+        existingItem.quantity++;
+
+    } else {
+
+        cart.push({
+            name: productName,
+            image: imageSrc,
+            price: 29,
+            quantity: 1
+        });
+
+    }
+
+    updateCart();
+
+    alert(productName + " added to cart!");
+}
+
+
+function updateCart() {
+
+    const cartItems = document.getElementById("cartItems");
+    const cartCount = document.getElementById("cartCount");
+    const cartTotal = document.getElementById("cartTotal");
+
+    if (!cartItems || !cartCount || !cartTotal) return;
+
+    let totalItems = 0;
+    let totalPrice = 0;
+
+    cart.forEach(item => {
+
+        totalItems += item.quantity;
+        totalPrice += item.price * item.quantity;
+
+    });
+
+    cartCount.textContent = totalItems;
+
+    cartTotal.textContent = "Total: ₹" + totalPrice;
+
+
+    if (cart.length === 0) {
+
+        cartItems.innerHTML = `
+            <div class="empty-cart">
+                Your cart is empty.
+            </div>
+        `;
+
+        return;
+    }
+
+
+    cartItems.innerHTML = "";
+
+    cart.forEach((item, index) => {
+
+        const subtotal = item.price * item.quantity;
+
+        cartItems.innerHTML += `
+
+            <div class="cart-item">
+
+                <img
+                    src="${item.image}"
+                    alt="${item.name}">
+
+                <div class="cart-item-info">
+
+                    <h3>
+                        ${item.name}
+                    </h3>
+
+                    <div class="cart-item-price">
+
+                        ₹${item.price} each · ₹${subtotal}
+
+                    </div>
+
+                    <div class="cart-quantity">
+
+                        <button
+                            onclick="changeCartQuantity(${index}, -1)">
+                            −
+                        </button>
+
+                        <span>
+                            ${item.quantity}
+                        </span>
+
+                        <button
+                            onclick="changeCartQuantity(${index}, 1)">
+                            +
+                        </button>
+
+                    </div>
+
+                    <button
+                        class="remove-cart"
+                        onclick="removeFromCart(${index})">
+
+                        REMOVE
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        `;
+
+    });
+
+}
+
+
+function changeCartQuantity(index, amount) {
+
+    if (!cart[index]) return;
+
+    cart[index].quantity += amount;
+
+    if (cart[index].quantity <= 0) {
+
+        cart.splice(index, 1);
+
+    }
+
+    updateCart();
+}
+
+
+function removeFromCart(index) {
+
+    cart.splice(index, 1);
+
+    updateCart();
+}
+
+
+function openCart() {
+
+    updateCart();
+
+    const overlay = document.getElementById("cartOverlay");
+
+    if (overlay) {
+        overlay.classList.add("show");
+    }
+
+}
+
+
+function closeCart(event) {
+
+    const overlay = document.getElementById("cartOverlay");
+
+    if (!overlay) return;
+
+    if (!event || event.target === overlay) {
+
+        overlay.classList.remove("show");
+
+    }
 
 }
 
 
 /* =========================
-   CLOSE ORDER BOX
+   CART WHATSAPP
+========================= */
+
+function orderCartOnWhatsApp() {
+
+    if (cart.length === 0) {
+
+        alert("Your cart is empty!");
+
+        return;
+    }
+
+    const phoneNumber = "916366788554";
+
+    let message =
+`Hi POSTERSBLR!
+
+I'd like to place an order.
+
+`;
+
+    let total = 0;
+
+    cart.forEach(item => {
+
+        const subtotal =
+            item.price * item.quantity;
+
+        total += subtotal;
+
+        message +=
+`Poster: ${item.name}
+Size: 44.5 × 30 cm
+Quantity: ${item.quantity}
+Price per poster: ₹${item.price}
+Subtotal: ₹${subtotal}
+
+`;
+
+    });
+
+    message +=
+`Total: ₹${total}
+
+Please let me know the delivery details.`;
+
+
+    const whatsappURL =
+        "https://wa.me/" +
+        phoneNumber +
+        "?text=" +
+        encodeURIComponent(message);
+
+    window.location.href = whatsappURL;
+}
+
+
+/* =========================
+   BUY NOW
+========================= */
+
+let selectedProduct = "";
+let quantity = 1;
+
+
+function buyProduct(productName) {
+
+    selectedProduct = productName;
+
+    quantity = 1;
+
+    const selectedPoster =
+        document.getElementById("selectedPoster");
+
+    if (selectedPoster) {
+
+        selectedPoster.textContent =
+            productName;
+
+    }
+
+    updateOrderTotal();
+
+    const overlay =
+        document.getElementById("orderOverlay");
+
+    if (overlay) {
+
+        overlay.classList.add("show");
+
+    }
+
+}
+
+
+/* =========================
+   ORDER QUANTITY
+========================= */
+
+function changeQuantity(amount) {
+
+    quantity += amount;
+
+    if (quantity < 1) {
+
+        quantity = 1;
+
+    }
+
+    updateOrderTotal();
+}
+
+
+function updateOrderTotal() {
+
+    const total = quantity * 29;
+
+    const quantityElement =
+        document.getElementById("quantity");
+
+    const totalElement =
+        document.getElementById("totalPrice");
+
+    if (quantityElement) {
+
+        quantityElement.textContent =
+            quantity;
+
+    }
+
+    if (totalElement) {
+
+        totalElement.textContent =
+            total;
+
+    }
+
+}
+
+
+/* =========================
+   CLOSE BUY NOW
 ========================= */
 
 function closeOrder() {
 
-    document.getElementById(
-        "orderOverlay"
-    ).classList.remove("show");
+    const overlay =
+        document.getElementById("orderOverlay");
+
+    if (overlay) {
+
+        overlay.classList.remove("show");
+
+    }
 
 }
 
 
 /* =========================
-   WHATSAPP ORDER
+   BUY NOW → WHATSAPP
 ========================= */
 
 function orderOnWhatsApp() {
@@ -2070,10 +2444,8 @@ function orderOnWhatsApp() {
     const phoneNumber =
         "916366788554";
 
-
     const total =
         quantity * 29;
-
 
     const message =
 `Hi POSTERSBLR!
@@ -2095,7 +2467,6 @@ Please let me know the delivery details.`;
         "?text=" +
         encodeURIComponent(message);
 
-
     window.location.href =
         whatsappURL;
 
@@ -2103,7 +2474,7 @@ Please let me know the delivery details.`;
 
 
 /* =========================
-   CLOSE POPUPS WITH ESC
+   ESCAPE KEY
 ========================= */
 
 document.addEventListener(
@@ -2112,19 +2483,27 @@ document.addEventListener(
 
         if (event.key === "Escape") {
 
-            document.getElementById(
-                "previewOverlay"
-            ).classList.remove("show");
+            const preview =
+                document.getElementById("previewOverlay");
+
+            const cartOverlay =
+                document.getElementById("cartOverlay");
+
+            const orderOverlay =
+                document.getElementById("orderOverlay");
 
 
-            document.getElementById(
-                "cartOverlay"
-            ).classList.remove("show");
+            if (preview) {
+                preview.classList.remove("show");
+            }
 
+            if (cartOverlay) {
+                cartOverlay.classList.remove("show");
+            }
 
-            document.getElementById(
-                "orderOverlay"
-            ).classList.remove("show");
+            if (orderOverlay) {
+                orderOverlay.classList.remove("show");
+            }
 
         }
 
@@ -2133,14 +2512,12 @@ document.addEventListener(
 
 
 /* =========================
-   INITIAL CART
+   START CART
 ========================= */
 
 updateCart();
 
-
 </script>
-
 
 </body>
 
