@@ -61,6 +61,11 @@ header {
     color: #e87535;
 }
 
+nav {
+    display: flex;
+    align-items: center;
+}
+
 nav a {
     text-decoration: none;
     color: #222;
@@ -73,6 +78,55 @@ nav a {
 
 nav a:hover {
     color: #e87535;
+}
+
+
+/* =========================
+   CART BUTTON
+========================= */
+
+.cart-button {
+    border: none;
+
+    background: #171717;
+    color: white;
+
+    padding: 10px 15px;
+
+    border-radius: 22px;
+
+    font-size: 13px;
+    font-weight: 800;
+
+    cursor: pointer;
+
+    margin-left: 20px;
+
+    transition: 0.2s;
+}
+
+.cart-button:hover {
+    background: #e87535;
+
+    transform: translateY(-2px);
+}
+
+#cartCount {
+    display: inline-block;
+
+    min-width: 18px;
+
+    padding: 2px 5px;
+
+    margin-left: 4px;
+
+    border-radius: 10px;
+
+    background: #e87535;
+
+    color: white;
+
+    font-size: 11px;
 }
 
 
@@ -276,6 +330,45 @@ nav a:hover {
     font-size: 14px;
 
     overflow: hidden;
+
+    cursor: pointer;
+
+    position: relative;
+}
+
+.product-image::after {
+    content: "TAP TO PREVIEW";
+
+    position: absolute;
+
+    bottom: 12px;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    background: rgba(0,0,0,0.72);
+
+    color: white;
+
+    padding: 7px 11px;
+
+    border-radius: 20px;
+
+    font-size: 9px;
+
+    font-weight: 800;
+
+    letter-spacing: 0.5px;
+
+    opacity: 0;
+
+    transition: 0.2s;
+
+    pointer-events: none;
+}
+
+.product-image:hover::after {
+    opacity: 1;
 }
 
 .product-image img {
@@ -327,18 +420,26 @@ nav a:hover {
     margin-bottom: 15px;
 }
 
-.buy-btn {
-    width: 100%;
 
-    padding: 13px;
+/* =========================
+   PRODUCT BUTTONS
+========================= */
+
+.product-buttons {
+    display: flex;
+
+    gap: 8px;
+}
+
+.buy-btn,
+.add-cart-btn {
+    flex: 1;
+
+    padding: 13px 8px;
 
     border: none;
 
     border-radius: 11px;
-
-    background: #171717;
-
-    color: white;
 
     font-weight: bold;
 
@@ -347,7 +448,330 @@ nav a:hover {
     transition: 0.2s;
 }
 
+.buy-btn {
+    background: #171717;
+
+    color: white;
+}
+
 .buy-btn:hover {
+    background: #e87535;
+
+    transform: translateY(-2px);
+}
+
+.add-cart-btn {
+    background: #f1f0eb;
+
+    color: #171717;
+}
+
+.add-cart-btn:hover {
+    background: #e87535;
+
+    color: white;
+
+    transform: translateY(-2px);
+}
+
+
+/* =========================
+   PREVIEW OVERLAY
+========================= */
+
+.preview-overlay {
+    position: fixed;
+
+    inset: 0;
+
+    background: rgba(0,0,0,0.78);
+
+    display: none;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+
+    z-index: 2000;
+
+    backdrop-filter: blur(8px);
+}
+
+.preview-overlay.show {
+    display: flex;
+}
+
+.preview-box {
+    position: relative;
+
+    max-width: 90vw;
+    max-height: 90vh;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+}
+
+.preview-box img {
+    max-width: 90vw;
+
+    max-height: 85vh;
+
+    width: auto;
+    height: auto;
+
+    object-fit: contain;
+
+    border-radius: 12px;
+
+    box-shadow:
+        0 25px 80px rgba(0,0,0,0.45);
+}
+
+.close-preview {
+    position: absolute;
+
+    top: -15px;
+    right: -15px;
+
+    width: 40px;
+    height: 40px;
+
+    border: none;
+
+    border-radius: 50%;
+
+    background: white;
+
+    color: #171717;
+
+    font-size: 25px;
+
+    cursor: pointer;
+
+    z-index: 5;
+
+    box-shadow:
+        0 5px 20px rgba(0,0,0,0.25);
+}
+
+
+/* =========================
+   CART OVERLAY
+========================= */
+
+.cart-overlay {
+    position: fixed;
+
+    inset: 0;
+
+    background: rgba(0,0,0,0.45);
+
+    display: none;
+
+    align-items: flex-end;
+    justify-content: flex-end;
+
+    z-index: 1500;
+
+    backdrop-filter: blur(5px);
+}
+
+.cart-overlay.show {
+    display: flex;
+}
+
+.cart-box {
+    width: 100%;
+
+    max-width: 430px;
+
+    height: 100%;
+
+    background: #fff;
+
+    padding: 25px;
+
+    overflow-y: auto;
+
+    box-shadow:
+        -15px 0 50px rgba(0,0,0,0.18);
+
+    animation: cartAppear 0.2s ease;
+}
+
+@keyframes cartAppear {
+
+    from {
+        transform: translateX(30px);
+
+        opacity: 0;
+    }
+
+    to {
+        transform: translateX(0);
+
+        opacity: 1;
+    }
+
+}
+
+.cart-header {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-bottom: 25px;
+}
+
+.cart-header h2 {
+    font-size: 28px;
+}
+
+.close-cart {
+    width: 36px;
+    height: 36px;
+
+    border: none;
+
+    border-radius: 50%;
+
+    background: #f1f0eb;
+
+    font-size: 22px;
+
+    cursor: pointer;
+}
+
+.cart-item {
+    display: flex;
+
+    gap: 12px;
+
+    padding: 15px 0;
+
+    border-bottom: 1px solid #eee;
+
+    align-items: center;
+}
+
+.cart-item img {
+    width: 65px;
+    height: 82px;
+
+    object-fit: cover;
+
+    border-radius: 9px;
+
+    background: #eee;
+}
+
+.cart-item-info {
+    flex: 1;
+}
+
+.cart-item-info h3 {
+    font-size: 15px;
+
+    margin-bottom: 5px;
+}
+
+.cart-item-price {
+    font-size: 13px;
+
+    color: #666;
+
+    margin-bottom: 8px;
+}
+
+.cart-quantity {
+    display: flex;
+
+    align-items: center;
+
+    gap: 9px;
+}
+
+.cart-quantity button {
+    width: 27px;
+    height: 27px;
+
+    border: none;
+
+    border-radius: 50%;
+
+    background: #171717;
+
+    color: white;
+
+    cursor: pointer;
+
+    font-size: 16px;
+}
+
+.remove-cart {
+    border: none;
+
+    background: transparent;
+
+    color: #e87535;
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    margin-top: 5px;
+}
+
+.empty-cart {
+    text-align: center;
+
+    color: #777;
+
+    padding: 50px 10px;
+}
+
+.cart-total {
+    font-size: 21px;
+
+    font-weight: 900;
+
+    margin-top: 25px;
+
+    padding-top: 20px;
+
+    border-top: 1px solid #eee;
+}
+
+.cart-whatsapp {
+    width: 100%;
+
+    padding: 14px;
+
+    margin-top: 15px;
+
+    border: none;
+
+    border-radius: 12px;
+
+    background: #171717;
+
+    color: white;
+
+    font-weight: 800;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.cart-whatsapp:hover {
     background: #e87535;
 
     transform: translateY(-2px);
@@ -650,6 +1074,14 @@ footer p {
         font-size: 12px;
     }
 
+    .cart-button {
+        margin-left: 12px;
+
+        padding: 9px 11px;
+
+        font-size: 11px;
+    }
+
     .hero {
         margin: 20px 15px;
 
@@ -678,6 +1110,10 @@ footer p {
         font-size: 16px;
     }
 
+    .product-buttons {
+        flex-direction: column;
+    }
+
 }
 
 @media (max-width: 500px) {
@@ -704,6 +1140,10 @@ footer p {
         font-size: 25px;
     }
 
+    .cart-box {
+        max-width: 100%;
+    }
+
 }
 
 </style>
@@ -724,9 +1164,24 @@ footer p {
     </div>
 
     <nav>
-        <a href="#shop">Shop</a>
 
-        <a href="#about">About</a>
+        <a href="#shop">
+            Shop
+        </a>
+
+        <a href="#about">
+            About
+        </a>
+
+        <button
+            class="cart-button"
+            onclick="openCart()">
+
+            🛒 Cart
+            <span id="cartCount">0</span>
+
+        </button>
+
     </nav>
 
 </header>
@@ -816,7 +1271,9 @@ footer p {
 
     <div class="product" data-category="gym">
 
-        <div class="product-image">
+        <div
+            class="product-image"
+            onclick="openPreview(this.querySelector('img').src, 'NO EXCUSES')">
 
             <img src="gym1.jpg">
 
@@ -834,13 +1291,25 @@ footer p {
                 ₹29
             </div>
 
-            <button
-                class="buy-btn"
-                onclick="buyProduct('NO EXCUSES')">
+            <div class="product-buttons">
 
-                BUY NOW
+                <button
+                    class="add-cart-btn"
+                    onclick="addToCart('NO EXCUSES', 'gym1.jpg')">
 
-            </button>
+                    ADD TO CART
+
+                </button>
+
+                <button
+                    class="buy-btn"
+                    onclick="buyProduct('NO EXCUSES')">
+
+                    BUY NOW
+
+                </button>
+
+            </div>
 
         </div>
 
@@ -851,7 +1320,9 @@ footer p {
 
     <div class="product" data-category="gym">
 
-        <div class="product-image">
+        <div
+            class="product-image"
+            onclick="openPreview(this.querySelector('img').src, 'DISCIPLINE')">
 
             <img src="gym2.jpg">
 
@@ -869,13 +1340,25 @@ footer p {
                 ₹29
             </div>
 
-            <button
-                class="buy-btn"
-                onclick="buyProduct('DISCIPLINE')">
+            <div class="product-buttons">
 
-                BUY NOW
+                <button
+                    class="add-cart-btn"
+                    onclick="addToCart('DISCIPLINE', 'gym2.jpg')">
 
-            </button>
+                    ADD TO CART
+
+                </button>
+
+                <button
+                    class="buy-btn"
+                    onclick="buyProduct('DISCIPLINE')">
+
+                    BUY NOW
+
+                </button>
+
+            </div>
 
         </div>
 
@@ -886,7 +1369,9 @@ footer p {
 
     <div class="product" data-category="travel">
 
-        <div class="product-image">
+        <div
+            class="product-image"
+            onclick="openPreview(this.querySelector('img').src, 'WANDER')">
 
             <img src="travel1.jpg">
 
@@ -904,13 +1389,25 @@ footer p {
                 ₹29
             </div>
 
-            <button
-                class="buy-btn"
-                onclick="buyProduct('WANDER')">
+            <div class="product-buttons">
 
-                BUY NOW
+                <button
+                    class="add-cart-btn"
+                    onclick="addToCart('WANDER', 'travel1.jpg')">
 
-            </button>
+                    ADD TO CART
+
+                </button>
+
+                <button
+                    class="buy-btn"
+                    onclick="buyProduct('WANDER')">
+
+                    BUY NOW
+
+                </button>
+
+            </div>
 
         </div>
 
@@ -921,7 +1418,9 @@ footer p {
 
     <div class="product" data-category="travel">
 
-        <div class="product-image">
+        <div
+            class="product-image"
+            onclick="openPreview(this.querySelector('img').src, 'EXPLORE')">
 
             <img src="travel2.jpg">
 
@@ -939,13 +1438,25 @@ footer p {
                 ₹29
             </div>
 
-            <button
-                class="buy-btn"
-                onclick="buyProduct('EXPLORE')">
+            <div class="product-buttons">
 
-                BUY NOW
+                <button
+                    class="add-cart-btn"
+                    onclick="addToCart('EXPLORE', 'travel2.jpg')">
 
-            </button>
+                    ADD TO CART
+
+                </button>
+
+                <button
+                    class="buy-btn"
+                    onclick="buyProduct('EXPLORE')">
+
+                    BUY NOW
+
+                </button>
+
+            </div>
 
         </div>
 
@@ -956,7 +1467,9 @@ footer p {
 
     <div class="product" data-category="motivation">
 
-        <div class="product-image">
+        <div
+            class="product-image"
+            onclick="openPreview(this.querySelector('img').src, 'KEEP GOING')">
 
             <img src="motivation1.jpg">
 
@@ -973,162 +1486,7 @@ footer p {
             <div class="price">
                 ₹29
             </div>
-
-            <button
-                class="buy-btn"
-                onclick="buyProduct('KEEP GOING')">
-
-                BUY NOW
-
-            </button>
-
-        </div>
-
-    </div>
-
-
-    <!-- MOTIVATION 2 -->
-
-    <div class="product" data-category="motivation">
-
-        <div class="product-image">
-
-            <img src="motivation2.jpg">
-
-        </div>
-
-        <div class="product-info">
-
-            <h3>FOCUS</h3>
-
-            <div class="category">
-                Motivation
-            </div>
-
-            <div class="price">
-                ₹29
-            </div>
-
-            <button
-                class="buy-btn"
-                onclick="buyProduct('FOCUS')">
-
-                BUY NOW
-
-            </button>
-
-        </div>
-
-    </div>
-
-
-</div>
-
-</section>
-    <!-- =========================
-     ORDER BOX
-========================= -->
-
-<div class="order-overlay" id="orderOverlay">
-
-    <div class="order-box">
-
-        <button
-            class="close-order"
-            onclick="closeOrder()">
-
-            ×
-
-        </button>
-
-        <h2>Order Poster</h2>
-
-        <p
-            class="selected-poster"
-            id="selectedPoster">
-
-            Poster Name
-
-        </p>
-
-        <p class="order-price">
-            ₹29 each
-        </p>
-
-        <p class="poster-size">
-            Size: 44.5 × 30 cm
-        </p>
-
-
-        <!-- QUANTITY -->
-
-        <div class="quantity-area">
-
-            <span>
-                Quantity
-            </span>
-
-            <div class="quantity-control">
-
-                <button
-                    onclick="changeQuantity(-1)">
-
-                    −
-
-                </button>
-
-                <span id="quantity">
-                    1
-                </span>
-
-                <button
-                    onclick="changeQuantity(1)">
-
-                    +
-
-                </button>
-
-            </div>
-
-        </div>
-
-
-        <!-- TOTAL -->
-
-        <div class="total">
-
-            Total: ₹<span id="totalPrice">29</span>
-
-        </div>
-
-
-        <!-- WHATSAPP -->
-
-        <button
-            class="whatsapp-order"
-            onclick="orderOnWhatsApp()">
-
-            ORDER ON WHATSAPP
-
-        </button>
-
-
-        <!-- CANCEL -->
-
-        <button
-            class="cancel-order"
-            onclick="closeOrder()">
-
-            CANCEL
-
-        </button>
-
-    </div>
-
-</div>
-
-
-<!-- =========================
+           <!-- =========================
      ABOUT
 ========================= -->
 
@@ -1226,6 +1584,390 @@ function filterProducts(category, button) {
         }
 
     });
+
+}
+
+
+/* =========================
+   POSTER PREVIEW
+========================= */
+
+function openPreview(imageSrc, posterName) {
+
+    const overlay =
+        document.getElementById("previewOverlay");
+
+    const image =
+        document.getElementById("previewImage");
+
+    image.src = imageSrc;
+
+    image.alt = posterName;
+
+    overlay.classList.add("show");
+
+}
+
+
+/* CLOSE PREVIEW */
+
+function closePreview(event) {
+
+    const overlay =
+        document.getElementById("previewOverlay");
+
+
+    /*
+       If the user clicks the dark background,
+       close the preview.
+
+       If they click the image or box,
+       keep it open.
+    */
+
+    if (
+        !event ||
+        event.target === overlay
+    ) {
+
+        overlay.classList.remove("show");
+
+        document.getElementById(
+            "previewImage"
+        ).src = "";
+
+    }
+
+}
+
+
+/* =========================
+   CART SYSTEM
+========================= */
+
+let cart = [];
+
+
+/* ADD TO CART */
+
+function addToCart(productName, imageSrc) {
+
+    const existingItem =
+        cart.find(
+            item => item.name === productName
+        );
+
+
+    if (existingItem) {
+
+        existingItem.quantity++;
+
+    }
+
+    else {
+
+        cart.push({
+
+            name: productName,
+
+            image: imageSrc,
+
+            price: 29,
+
+            quantity: 1
+
+        });
+
+    }
+
+
+    updateCart();
+
+
+    /*
+       Small visual confirmation
+    */
+
+    const cartButton =
+        document.querySelector(".cart-button");
+
+    cartButton.style.transform =
+        "scale(1.08)";
+
+
+    setTimeout(() => {
+
+        cartButton.style.transform =
+            "scale(1)";
+
+    }, 180);
+
+}
+
+
+/* =========================
+   UPDATE CART
+========================= */
+
+function updateCart() {
+
+    const cartItems =
+        document.getElementById("cartItems");
+
+    const cartCount =
+        document.getElementById("cartCount");
+
+    const cartTotal =
+        document.getElementById("cartTotal");
+
+
+    let totalItems = 0;
+
+    let totalPrice = 0;
+
+
+    cart.forEach(item => {
+
+        totalItems += item.quantity;
+
+        totalPrice +=
+            item.price * item.quantity;
+
+    });
+
+
+    cartCount.textContent =
+        totalItems;
+
+
+    cartTotal.textContent =
+        "Total: ₹" + totalPrice;
+
+
+    if (cart.length === 0) {
+
+        cartItems.innerHTML = `
+
+            <div class="empty-cart">
+                Your cart is empty.
+            </div>
+
+        `;
+
+        return;
+
+    }
+
+
+    cartItems.innerHTML = "";
+
+
+    cart.forEach((item, index) => {
+
+        const itemTotal =
+            item.price * item.quantity;
+
+
+        cartItems.innerHTML += `
+
+            <div class="cart-item">
+
+                <img
+                    src="${item.image}"
+                    alt="${item.name}">
+
+                <div class="cart-item-info">
+
+                    <h3>
+                        ${item.name}
+                    </h3>
+
+                    <div class="cart-item-price">
+
+                        ₹${item.price}
+                        each ·
+                        ₹${itemTotal}
+
+                    </div>
+
+                    <div class="cart-quantity">
+
+                        <button
+                            onclick="changeCartQuantity(${index}, -1)">
+
+                            −
+
+                        </button>
+
+                        <span>
+                            ${item.quantity}
+                        </span>
+
+                        <button
+                            onclick="changeCartQuantity(${index}, 1)">
+
+                            +
+
+                        </button>
+
+                    </div>
+
+                    <button
+                        class="remove-cart"
+                        onclick="removeFromCart(${index})">
+
+                        REMOVE
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        `;
+
+    });
+
+}
+
+
+/* =========================
+   CHANGE CART QUANTITY
+========================= */
+
+function changeCartQuantity(index, amount) {
+
+    cart[index].quantity += amount;
+
+
+    if (cart[index].quantity <= 0) {
+
+        cart.splice(index, 1);
+
+    }
+
+
+    updateCart();
+
+}
+
+
+/* =========================
+   REMOVE FROM CART
+========================= */
+
+function removeFromCart(index) {
+
+    cart.splice(index, 1);
+
+    updateCart();
+
+}
+
+
+/* =========================
+   OPEN CART
+========================= */
+
+function openCart() {
+
+    updateCart();
+
+    document.getElementById(
+        "cartOverlay"
+    ).classList.add("show");
+
+}
+
+
+/* =========================
+   CLOSE CART
+========================= */
+
+function closeCart(event) {
+
+    const overlay =
+        document.getElementById("cartOverlay");
+
+
+    if (
+        !event ||
+        event.target === overlay
+    ) {
+
+        overlay.classList.remove("show");
+
+    }
+
+}
+
+
+/* =========================
+   ORDER CART ON WHATSAPP
+========================= */
+
+function orderCartOnWhatsApp() {
+
+    if (cart.length === 0) {
+
+        alert("Your cart is empty!");
+
+        return;
+
+    }
+
+
+    const phoneNumber =
+        "916366788554";
+
+
+    let message =
+`Hi POSTERSBLR!
+
+I'd like to place an order.
+
+`;
+
+
+    let total = 0;
+
+
+    cart.forEach(item => {
+
+        const itemTotal =
+            item.price * item.quantity;
+
+
+        total += itemTotal;
+
+
+        message +=
+`Poster: ${item.name}
+Size: 44.5 × 30 cm
+Quantity: ${item.quantity}
+Price per poster: ₹${item.price}
+Subtotal: ₹${itemTotal}
+
+`;
+
+    });
+
+
+    message +=
+`Total: ₹${total}
+
+Please let me know the delivery details.`;
+
+
+    const whatsappURL =
+        "https://wa.me/" +
+        phoneNumber +
+        "?text=" +
+        encodeURIComponent(message);
+
+
+    window.location.href =
+        whatsappURL;
 
 }
 
@@ -1360,9 +2102,46 @@ Please let me know the delivery details.`;
 }
 
 
+/* =========================
+   CLOSE POPUPS WITH ESC
+========================= */
+
+document.addEventListener(
+    "keydown",
+    function(event) {
+
+        if (event.key === "Escape") {
+
+            document.getElementById(
+                "previewOverlay"
+            ).classList.remove("show");
+
+
+            document.getElementById(
+                "cartOverlay"
+            ).classList.remove("show");
+
+
+            document.getElementById(
+                "orderOverlay"
+            ).classList.remove("show");
+
+        }
+
+    }
+);
+
+
+/* =========================
+   INITIAL CART
+========================= */
+
+updateCart();
+
+
 </script>
 
 
 </body>
 
-</html>
+        </html>
