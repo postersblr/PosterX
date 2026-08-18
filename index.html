@@ -484,7 +484,7 @@ src="gym1.jpg">
             </div>
 
             <div class="price">
-                ₹299
+                ₹29
             </div>
 
             <button
@@ -516,7 +516,7 @@ src="gym2.jpg">
             </div>
 
             <div class="price">
-                ₹299
+                ₹29
             </div>
 
             <button
@@ -550,7 +550,7 @@ src="travel1.jpg">">
             </div>
 
             <div class="price">
-                ₹299
+                ₹29
             </div>
 
             <button
@@ -582,7 +582,7 @@ src="travel2.jpg">
             </div>
 
             <div class="price">
-                ₹299
+                ₹29
             </div>
 
             <button
@@ -616,7 +616,7 @@ src="motivation1.jpg">
             </div>
 
             <div class="price">
-                ₹299
+                ₹29
             </div>
 
             <button
@@ -650,7 +650,7 @@ src="motivation2.jpg">
             </div>
 
             <div class="price">
-                ₹299
+                ₹29
             </div>
 
             <button
@@ -756,9 +756,19 @@ function buyProduct(productName) {
     const phoneNumber = "916366788554";
 
     const message =
-        "Hi! I want to order the " +
-        productName +
-        " poster from POSTERSBLR.";
+`Hi POSTERSBLR!
+
+I'd like to order:
+
+Poster: ${productName}
+
+Size: 44.5cm × 30cm
+
+Price: ₹29
+
+Quantity: 1
+
+Please let me know the delivery details.`;
 
     const whatsappURL =
         "https://wa.me/" +
@@ -767,6 +777,7 @@ function buyProduct(productName) {
         encodeURIComponent(message);
 
     window.location.href = whatsappURL;
+
 }
 
 
