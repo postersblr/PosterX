@@ -1,198 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>POSTERSBLR | Premium Posters</title>
-/* ORDER BOX */
 
-.order-overlay {
-    position: fixed;
-    inset: 0;
-
-    background: rgba(0,0,0,0.45);
-
-    display: none;
-    align-items: center;
-    justify-content: center;
-
-    padding: 20px;
-
-    z-index: 1000;
-
-    backdrop-filter: blur(5px);
-}
-
-.order-overlay.show {
-    display: flex;
-}
-
-.order-box {
-    width: 100%;
-    max-width: 420px;
-
-    background: #fff;
-
-    border-radius: 24px;
-
-    padding: 30px;
-
-    position: relative;
-
-    box-shadow: 0 25px 70px rgba(0,0,0,0.25);
-
-    animation: orderAppear 0.2s ease;
-}
-
-@keyframes orderAppear {
-
-    from {
-        opacity: 0;
-        transform: translateY(15px) scale(0.97);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-    }
-
-}
-
-.close-order {
-    position: absolute;
-
-    top: 15px;
-    right: 18px;
-
-    border: none;
-    background: #f1f0eb;
-
-    width: 35px;
-    height: 35px;
-
-    border-radius: 50%;
-
-    font-size: 22px;
-
-    cursor: pointer;
-}
-
-.order-box h2 {
-    font-size: 28px;
-    margin-bottom: 15px;
-}
-
-.selected-poster {
-    font-size: 20px;
-    font-weight: 800;
-
-    margin-bottom: 7px;
-}
-
-.order-price {
-    font-weight: 700;
-    color: #e87535;
-
-    margin-bottom: 5px;
-}
-
-.poster-size {
-    color: #666;
-    font-size: 14px;
-
-    margin-bottom: 25px;
-}
-
-.quantity-area {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    padding: 15px 0;
-
-    border-top: 1px solid #eee;
-    border-bottom: 1px solid #eee;
-}
-
-.quantity-area > span {
-    font-weight: 700;
-}
-
-.quantity-control {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-}
-
-.quantity-control button {
-    width: 35px;
-    height: 35px;
-
-    border: none;
-    border-radius: 50%;
-
-    background: #171717;
-    color: white;
-
-    font-size: 20px;
-
-    cursor: pointer;
-}
-
-#quantity {
-    font-weight: 800;
-    min-width: 20px;
-    text-align: center;
-}
-
-.total {
-    font-size: 20px;
-    font-weight: 900;
-
-    margin: 22px 0;
-}
-
-.whatsapp-order {
-    width: 100%;
-
-    padding: 14px;
-
-    border: none;
-    border-radius: 12px;
-
-    background: #171717;
-    color: white;
-
-    font-weight: 800;
-
-    cursor: pointer;
-
-    transition: 0.2s;
-}
-
-.whatsapp-order:hover {
-    background: #e87535;
-    transform: translateY(-2px);
-}
-
-.cancel-order {
-    width: 100%;
-
-    margin-top: 10px;
-
-    padding: 12px;
-
-    border: none;
-    background: transparent;
-
-    color: #666;
-
-    font-weight: 700;
-
-    cursor: pointer;
-}
 <style>
+
+/* =========================
+   BASIC
+========================= */
 
 * {
     margin: 0;
@@ -211,16 +30,21 @@ body {
 }
 
 
-/* HEADER */
+/* =========================
+   HEADER
+========================= */
 
 header {
     background: rgba(255,255,255,0.92);
     backdrop-filter: blur(12px);
     padding: 18px 7%;
+
     display: flex;
     align-items: center;
     justify-content: space-between;
+
     border-bottom: 1px solid #e5e2da;
+
     position: sticky;
     top: 0;
     z-index: 100;
@@ -240,7 +64,9 @@ header {
 nav a {
     text-decoration: none;
     color: #222;
+
     margin-left: 25px;
+
     font-size: 14px;
     font-weight: 700;
 }
@@ -250,28 +76,45 @@ nav a:hover {
 }
 
 
-/* HERO */
+/* =========================
+   HERO
+========================= */
 
 .hero {
     max-width: 1200px;
+
     margin: 40px auto 30px;
+
     padding: 75px 8%;
+
     border-radius: 28px;
 
     background:
-        radial-gradient(circle at 15% 20%, rgba(232,117,53,0.18), transparent 30%),
-        radial-gradient(circle at 85% 80%, rgba(82,139,190,0.18), transparent 30%),
+        radial-gradient(
+            circle at 15% 20%,
+            rgba(232,117,53,0.18),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 85% 80%,
+            rgba(82,139,190,0.18),
+            transparent 30%
+        ),
         #ebe8df;
 
     text-align: center;
+
     position: relative;
     overflow: hidden;
 }
 
 .hero h1 {
     font-size: clamp(42px, 7vw, 78px);
+
     line-height: 0.92;
+
     letter-spacing: -5px;
+
     margin-bottom: 22px;
 }
 
@@ -281,15 +124,21 @@ nav a:hover {
 
 .hero p {
     max-width: 620px;
+
     margin: auto;
+
     font-size: 17px;
+
     line-height: 1.7;
+
     color: #555;
 }
 
 .hero button {
     margin-top: 30px;
+
     padding: 15px 30px;
+
     border: none;
     border-radius: 30px;
 
@@ -298,6 +147,7 @@ nav a:hover {
 
     font-size: 14px;
     font-weight: bold;
+
     cursor: pointer;
 
     transition: 0.25s;
@@ -305,70 +155,98 @@ nav a:hover {
 
 .hero button:hover {
     transform: translateY(-3px);
-    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+
+    box-shadow:
+        0 10px 25px rgba(0,0,0,0.15);
 }
 
 
-/* CATEGORIES */
+/* =========================
+   CATEGORIES
+========================= */
 
 .categories {
     max-width: 1200px;
+
     margin: 45px auto 25px;
+
     padding: 0 20px;
 }
 
 .categories h2 {
     font-size: 30px;
+
     letter-spacing: -1px;
+
     margin-bottom: 18px;
 }
 
 .category-buttons {
     display: flex;
+
     gap: 10px;
+
     flex-wrap: wrap;
 }
 
 .category-buttons button {
     border: 1px solid #ddd8cd;
+
     background: #fff;
+
     padding: 12px 21px;
+
     border-radius: 25px;
+
     cursor: pointer;
+
     font-weight: 700;
+
     transition: 0.2s;
 }
 
 .category-buttons button:hover {
     transform: translateY(-2px);
+
     border-color: #e87535;
 }
 
 .category-buttons button.active {
     background: #e87535;
+
     color: white;
+
     border-color: #e87535;
 }
 
 
-/* PRODUCTS */
+/* =========================
+   PRODUCTS
+========================= */
 
 .products {
     max-width: 1200px;
+
     margin: 35px auto 80px;
+
     padding: 0 20px;
 }
 
 .product-grid {
     display: grid;
+
     grid-template-columns: repeat(3, 1fr);
+
     gap: 22px;
 }
 
 .product {
     background: #fff;
+
     border-radius: 20px;
+
     overflow: hidden;
+
     border: 1px solid #e7e3da;
 
     transition: 0.3s ease;
@@ -376,26 +254,34 @@ nav a:hover {
 
 .product:hover {
     transform: translateY(-7px);
-    box-shadow: 0 18px 40px rgba(40,35,25,0.10);
+
+    box-shadow:
+        0 18px 40px rgba(40,35,25,0.10);
 }
 
 .product-image {
     width: 100%;
+
     aspect-ratio: 3 / 4;
+
     background: #e4e1d8;
 
     display: flex;
+
     align-items: center;
     justify-content: center;
 
     color: #777;
+
     font-size: 14px;
+
     overflow: hidden;
 }
 
 .product-image img {
     width: 100%;
     height: 100%;
+
     object-fit: cover;
 
     transition: transform 0.4s ease;
@@ -411,6 +297,7 @@ nav a:hover {
 
 .product-info h3 {
     font-size: 18px;
+
     margin-bottom: 7px;
 }
 
@@ -418,12 +305,15 @@ nav a:hover {
     display: inline-block;
 
     font-size: 11px;
+
     font-weight: 700;
 
     color: #528bbe;
+
     background: #edf4f9;
 
     padding: 5px 9px;
+
     border-radius: 20px;
 
     margin-bottom: 13px;
@@ -431,21 +321,27 @@ nav a:hover {
 
 .price {
     font-size: 18px;
+
     font-weight: 800;
+
     margin-bottom: 15px;
 }
 
 .buy-btn {
     width: 100%;
+
     padding: 13px;
 
     border: none;
+
     border-radius: 11px;
 
     background: #171717;
+
     color: white;
 
     font-weight: bold;
+
     cursor: pointer;
 
     transition: 0.2s;
@@ -453,41 +349,275 @@ nav a:hover {
 
 .buy-btn:hover {
     background: #e87535;
+
     transform: translateY(-2px);
 }
 
 
-/* ABOUT */
+/* =========================
+   ORDER BOX
+========================= */
+
+.order-overlay {
+    position: fixed;
+
+    inset: 0;
+
+    background: rgba(0,0,0,0.45);
+
+    display: none;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+
+    z-index: 1000;
+
+    backdrop-filter: blur(5px);
+}
+
+.order-overlay.show {
+    display: flex;
+}
+
+.order-box {
+    width: 100%;
+
+    max-width: 420px;
+
+    background: #fff;
+
+    border-radius: 24px;
+
+    padding: 30px;
+
+    position: relative;
+
+    box-shadow:
+        0 25px 70px rgba(0,0,0,0.25);
+
+    animation: orderAppear 0.2s ease;
+}
+
+@keyframes orderAppear {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(15px)
+            scale(0.97);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1);
+    }
+
+}
+
+.close-order {
+    position: absolute;
+
+    top: 15px;
+    right: 18px;
+
+    border: none;
+
+    background: #f1f0eb;
+
+    width: 35px;
+    height: 35px;
+
+    border-radius: 50%;
+
+    font-size: 22px;
+
+    cursor: pointer;
+}
+
+.order-box h2 {
+    font-size: 28px;
+
+    margin-bottom: 15px;
+}
+
+.selected-poster {
+    font-size: 20px;
+
+    font-weight: 800;
+
+    margin-bottom: 7px;
+}
+
+.order-price {
+    font-weight: 700;
+
+    color: #e87535;
+
+    margin-bottom: 5px;
+}
+
+.poster-size {
+    color: #666;
+
+    font-size: 14px;
+
+    margin-bottom: 25px;
+}
+
+.quantity-area {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    padding: 15px 0;
+
+    border-top: 1px solid #eee;
+
+    border-bottom: 1px solid #eee;
+}
+
+.quantity-area > span {
+    font-weight: 700;
+}
+
+.quantity-control {
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+}
+
+.quantity-control button {
+    width: 35px;
+    height: 35px;
+
+    border: none;
+
+    border-radius: 50%;
+
+    background: #171717;
+
+    color: white;
+
+    font-size: 20px;
+
+    cursor: pointer;
+}
+
+#quantity {
+    font-weight: 800;
+
+    min-width: 20px;
+
+    text-align: center;
+}
+
+.total {
+    font-size: 20px;
+
+    font-weight: 900;
+
+    margin: 22px 0;
+}
+
+.whatsapp-order {
+    width: 100%;
+
+    padding: 14px;
+
+    border: none;
+
+    border-radius: 12px;
+
+    background: #171717;
+
+    color: white;
+
+    font-weight: 800;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.whatsapp-order:hover {
+    background: #e87535;
+
+    transform: translateY(-2px);
+}
+
+.cancel-order {
+    width: 100%;
+
+    margin-top: 10px;
+
+    padding: 12px;
+
+    border: none;
+
+    background: transparent;
+
+    color: #666;
+
+    font-weight: 700;
+
+    cursor: pointer;
+}
+
+
+/* =========================
+   ABOUT
+========================= */
 
 .about {
     background: #eeece5;
+
     padding: 75px 20px;
+
     text-align: center;
+
     border-top: 1px solid #e0ddd5;
 }
 
 .about h2 {
     font-size: 38px;
+
     letter-spacing: -2px;
+
     margin-bottom: 15px;
 }
 
 .about p {
     max-width: 650px;
+
     margin: auto;
 
     color: #666;
+
     line-height: 1.8;
 }
 
 
-/* FOOTER */
+/* =========================
+   FOOTER
+========================= */
 
 footer {
     background: #171717;
+
     color: white;
 
     padding: 40px 20px;
+
     text-align: center;
 }
 
@@ -497,12 +627,16 @@ footer strong {
 
 footer p {
     color: #aaa;
+
     font-size: 13px;
+
     margin-top: 9px;
 }
 
 
-/* MOBILE */
+/* =========================
+   MOBILE
+========================= */
 
 @media (max-width: 800px) {
 
@@ -512,11 +646,13 @@ footer p {
 
     nav a {
         margin-left: 12px;
+
         font-size: 12px;
     }
 
     .hero {
         margin: 20px 15px;
+
         padding: 60px 20px;
     }
 
@@ -526,6 +662,7 @@ footer p {
 
     .product-grid {
         grid-template-columns: repeat(2, 1fr);
+
         gap: 13px;
     }
 
@@ -540,8 +677,8 @@ footer p {
     .price {
         font-size: 16px;
     }
-}
 
+}
 
 @media (max-width: 500px) {
 
@@ -551,6 +688,7 @@ footer p {
 
     nav a {
         font-size: 11px;
+
         margin-left: 8px;
     }
 
@@ -565,15 +703,19 @@ footer p {
     .categories h2 {
         font-size: 25px;
     }
+
 }
 
 </style>
+
 </head>
 
 <body>
 
 
-<!-- HEADER -->
+<!-- =========================
+     HEADER
+========================= -->
 
 <header>
 
@@ -583,18 +725,22 @@ footer p {
 
     <nav>
         <a href="#shop">Shop</a>
+
         <a href="#about">About</a>
     </nav>
 
 </header>
 
 
-<!-- HERO -->
+<!-- =========================
+     HERO
+========================= -->
 
 <section class="hero">
 
     <h1>
         MAKE YOUR<br>
+
         <span>WALL SPEAK.</span>
     </h1>
 
@@ -603,14 +749,19 @@ footer p {
         motivation and adventure into your space.
     </p>
 
-    <button onclick="document.getElementById('shop').scrollIntoView()">
+    <button
+        onclick="document.getElementById('shop').scrollIntoView()">
+
         EXPLORE POSTERS
+
     </button>
 
 </section>
 
 
-<!-- CATEGORIES -->
+<!-- =========================
+     CATEGORIES
+========================= -->
 
 <section class="categories" id="shop">
 
@@ -618,24 +769,33 @@ footer p {
 
     <div class="category-buttons">
 
-        <button class="active"
-        onclick="filterProducts('all', this)">
+        <button
+            class="active"
+            onclick="filterProducts('all', this)">
+
             All
+
         </button>
 
         <button
-        onclick="filterProducts('gym', this)">
+            onclick="filterProducts('gym', this)">
+
             Gym Motivation
+
         </button>
 
         <button
-        onclick="filterProducts('travel', this)">
+            onclick="filterProducts('travel', this)">
+
             Travel
+
         </button>
 
         <button
-        onclick="filterProducts('motivation', this)">
+            onclick="filterProducts('motivation', this)">
+
             Motivation
+
         </button>
 
     </div>
@@ -643,7 +803,9 @@ footer p {
 </section>
 
 
-<!-- PRODUCTS -->
+<!-- =========================
+     PRODUCTS
+========================= -->
 
 <section class="products">
 
@@ -656,8 +818,7 @@ footer p {
 
         <div class="product-image">
 
-            <<img
-src="gym1.jpg">
+            <img src="gym1.jpg">
 
         </div>
 
@@ -674,9 +835,11 @@ src="gym1.jpg">
             </div>
 
             <button
-            class="buy-btn"
-            onclick="buyProduct('NO EXCUSES')">
+                class="buy-btn"
+                onclick="buyProduct('NO EXCUSES')">
+
                 BUY NOW
+
             </button>
 
         </div>
@@ -689,8 +852,9 @@ src="gym1.jpg">
     <div class="product" data-category="gym">
 
         <div class="product-image">
-            <img
-src="gym2.jpg">
+
+            <img src="gym2.jpg">
+
         </div>
 
         <div class="product-info">
@@ -706,9 +870,11 @@ src="gym2.jpg">
             </div>
 
             <button
-            class="buy-btn"
-            onclick="buyProduct('DISCIPLINE')">
+                class="buy-btn"
+                onclick="buyProduct('DISCIPLINE')">
+
                 BUY NOW
+
             </button>
 
         </div>
@@ -722,8 +888,7 @@ src="gym2.jpg">
 
         <div class="product-image">
 
-           <img
-src="travel1.jpg">">
+            <img src="travel1.jpg">
 
         </div>
 
@@ -740,23 +905,26 @@ src="travel1.jpg">">
             </div>
 
             <button
-            class="buy-btn"
-            onclick="buyProduct('WANDER')">
+                class="buy-btn"
+                onclick="buyProduct('WANDER')">
+
                 BUY NOW
+
             </button>
 
         </div>
 
     </div>
-    
-        <!-- TRAVEL 2 -->
+
+
+    <!-- TRAVEL 2 -->
 
     <div class="product" data-category="travel">
 
         <div class="product-image">
 
-            <img
-src="travel2.jpg">
+            <img src="travel2.jpg">
+
         </div>
 
         <div class="product-info">
@@ -772,9 +940,11 @@ src="travel2.jpg">
             </div>
 
             <button
-            class="buy-btn"
-            onclick="buyProduct('EXPLORE')">
+                class="buy-btn"
+                onclick="buyProduct('EXPLORE')">
+
                 BUY NOW
+
             </button>
 
         </div>
@@ -788,8 +958,7 @@ src="travel2.jpg">
 
         <div class="product-image">
 
-            <img
-src="motivation1.jpg">
+            <img src="motivation1.jpg">
 
         </div>
 
@@ -806,9 +975,11 @@ src="motivation1.jpg">
             </div>
 
             <button
-            class="buy-btn"
-            onclick="buyProduct('KEEP GOING')">
+                class="buy-btn"
+                onclick="buyProduct('KEEP GOING')">
+
                 BUY NOW
+
             </button>
 
         </div>
@@ -822,8 +993,7 @@ src="motivation1.jpg">
 
         <div class="product-image">
 
-            <img
-src="motivation2.jpg">
+            <img src="motivation2.jpg">
 
         </div>
 
@@ -840,62 +1010,99 @@ src="motivation2.jpg">
             </div>
 
             <button
-            class="buy-btn"
-            onclick="buyProduct('FOCUS')">
+                class="buy-btn"
+                onclick="buyProduct('FOCUS')">
+
                 BUY NOW
+
             </button>
 
         </div>
 
     </div>
 
+
 </div>
 
 </section>
-
-<!-- ORDER BOX -->
+    <!-- =========================
+     ORDER BOX
+========================= -->
 
 <div class="order-overlay" id="orderOverlay">
 
     <div class="order-box">
 
-        <button class="close-order" onclick="closeOrder()">×</button>
+        <button
+            class="close-order"
+            onclick="closeOrder()">
+
+            ×
+
+        </button>
 
         <h2>Order Poster</h2>
 
-        <p class="selected-poster" id="selectedPoster">
+        <p
+            class="selected-poster"
+            id="selectedPoster">
+
             Poster Name
+
         </p>
 
-        <p class="order-price">₹29 each</p>
+        <p class="order-price">
+            ₹29 each
+        </p>
 
         <p class="poster-size">
             Size: 44.5 × 30 cm
         </p>
 
+
+        <!-- QUANTITY -->
+
         <div class="quantity-area">
 
-            <span>Quantity</span>
+            <span>
+                Quantity
+            </span>
 
             <div class="quantity-control">
 
-                <button onclick="changeQuantity(-1)">
+                <button
+                    onclick="changeQuantity(-1)">
+
                     −
+
                 </button>
 
-                <span id="quantity">1</span>
+                <span id="quantity">
+                    1
+                </span>
 
-                <button onclick="changeQuantity(1)">
+                <button
+                    onclick="changeQuantity(1)">
+
                     +
+
                 </button>
 
             </div>
 
         </div>
 
+
+        <!-- TOTAL -->
+
         <div class="total">
+
             Total: ₹<span id="totalPrice">29</span>
+
         </div>
+
+
+        <!-- WHATSAPP -->
 
         <button
             class="whatsapp-order"
@@ -904,6 +1111,9 @@ src="motivation2.jpg">
             ORDER ON WHATSAPP
 
         </button>
+
+
+        <!-- CANCEL -->
 
         <button
             class="cancel-order"
@@ -916,38 +1126,61 @@ src="motivation2.jpg">
     </div>
 
 </div>
-<!-- ABOUT -->
-    
-<section class="about" id="about">
 
-    <h2>POSTERSBLR</h2>
+
+<!-- =========================
+     ABOUT
+========================= -->
+
+<section
+    class="about"
+    id="about">
+
+    <h2>
+        POSTERSBLR
+    </h2>
 
     <p>
+
         Your walls should say something about you.
         Discover posters designed for people who love
         ambition, adventure and a little personality.
+
     </p>
 
 </section>
 
 
-<!-- FOOTER -->
+<!-- =========================
+     FOOTER
+========================= -->
 
 <footer>
 
-    <strong>POSTERSBLR</strong>
+    <strong>
+        POSTERSBLR
+    </strong>
 
     <p>
-        © 2026 POSTERSBLR. All rights reserved.
+
+        © 2026 POSTERSBLR.
+        All rights reserved.
+
     </p>
 
 </footer>
 
 
+<!-- =========================
+     JAVASCRIPT
+========================= -->
+
 <script>
 
 
-/* CATEGORY FILTER */
+/* =========================
+   CATEGORY FILTER
+========================= */
 
 function filterProducts(category, button) {
 
@@ -997,62 +1230,108 @@ function filterProducts(category, button) {
 }
 
 
-/* BUY BUTTON */
+/* =========================
+   ORDER SYSTEM
+========================= */
 
 let selectedProduct = "";
+
 let quantity = 1;
+
+
+/* OPEN ORDER BOX */
 
 function buyProduct(productName) {
 
     selectedProduct = productName;
+
     quantity = 1;
 
-    document.getElementById("selectedPoster").textContent =
-        productName;
+
+    document.getElementById(
+        "selectedPoster"
+    ).textContent = productName;
+
 
     updateOrderTotal();
 
-    document.getElementById("orderOverlay")
-        .classList.add("show");
+
+    document.getElementById(
+        "orderOverlay"
+    ).classList.add("show");
+
 }
 
+
+/* =========================
+   CHANGE QUANTITY
+========================= */
 
 function changeQuantity(amount) {
 
     quantity += amount;
 
+
     if (quantity < 1) {
+
         quantity = 1;
+
     }
 
+
     updateOrderTotal();
+
 }
 
+
+/* =========================
+   UPDATE TOTAL
+========================= */
 
 function updateOrderTotal() {
 
-    const total = quantity * 29;
+    const total =
+        quantity * 29;
 
-    document.getElementById("quantity").textContent =
-        quantity;
 
-    document.getElementById("totalPrice").textContent =
-        total;
+    document.getElementById(
+        "quantity"
+    ).textContent = quantity;
+
+
+    document.getElementById(
+        "totalPrice"
+    ).textContent = total;
+
 }
 
+
+/* =========================
+   CLOSE ORDER BOX
+========================= */
 
 function closeOrder() {
 
-    document.getElementById("orderOverlay")
-        .classList.remove("show");
+    document.getElementById(
+        "orderOverlay"
+    ).classList.remove("show");
+
 }
 
 
+/* =========================
+   WHATSAPP ORDER
+========================= */
+
 function orderOnWhatsApp() {
 
-    const phoneNumber = "916366788554";
+    const phoneNumber =
+        "916366788554";
 
-    const total = quantity * 29;
+
+    const total =
+        quantity * 29;
+
 
     const message =
 `Hi POSTERSBLR!
@@ -1067,13 +1346,17 @@ Total: ₹${total}
 
 Please let me know the delivery details.`;
 
+
     const whatsappURL =
         "https://wa.me/" +
         phoneNumber +
         "?text=" +
         encodeURIComponent(message);
 
-    window.location.href = whatsappURL;
+
+    window.location.href =
+        whatsappURL;
+
 }
 
 
