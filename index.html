@@ -1,23 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 
 <meta charset="UTF-8">
-
-<meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>POSTERSBLR | Premium Posters</title>
 
-
 <style>
 
-/* =====================================================
+/* =========================
    RESET
-===================================================== */
+========================= */
 
 * {
     margin: 0;
@@ -36,16 +30,14 @@ body {
 }
 
 
-/* =====================================================
+/* =========================
    HEADER
-===================================================== */
+========================= */
 
 header {
     position: sticky;
     top: 0;
     z-index: 100;
-
-    width: 100%;
 
     display: flex;
     align-items: center;
@@ -54,7 +46,6 @@ header {
     padding: 18px 7%;
 
     background: rgba(255,255,255,0.94);
-
     backdrop-filter: blur(12px);
 
     border-bottom: 1px solid #e5e2da;
@@ -78,13 +69,10 @@ nav {
 }
 
 nav a {
-    text-decoration: none;
     color: #222;
-
+    text-decoration: none;
     font-size: 14px;
     font-weight: 700;
-
-    transition: 0.2s;
 }
 
 nav a:hover {
@@ -92,19 +80,18 @@ nav a:hover {
 }
 
 
-/* =====================================================
+/* =========================
    CART BUTTON
-===================================================== */
+========================= */
 
 .cart-button {
     border: none;
-
-    background: #171717;
-    color: white;
+    border-radius: 22px;
 
     padding: 10px 15px;
 
-    border-radius: 22px;
+    background: #171717;
+    color: white;
 
     font-size: 13px;
     font-weight: 800;
@@ -120,42 +107,33 @@ nav a:hover {
 }
 
 #cartCount {
-    display: inline-flex;
+    display: inline-block;
 
-    align-items: center;
-    justify-content: center;
-
-    min-width: 19px;
-    height: 19px;
-
+    min-width: 18px;
+    padding: 2px 5px;
     margin-left: 4px;
 
-    padding: 0 5px;
-
-    border-radius: 20px;
+    border-radius: 10px;
 
     background: #e87535;
-
     color: white;
 
     font-size: 11px;
+    text-align: center;
 }
 
 
-/* =====================================================
+/* =========================
    HERO
-===================================================== */
+========================= */
 
 .hero {
     max-width: 1200px;
 
     margin: 40px auto 30px;
-
-    padding: 80px 8%;
+    padding: 75px 8%;
 
     border-radius: 28px;
-
-    text-align: center;
 
     background:
         radial-gradient(
@@ -169,13 +147,13 @@ nav a:hover {
             transparent 30%
         ),
         #ebe8df;
+
+    text-align: center;
 }
 
 .hero h1 {
-    font-size: clamp(44px, 7vw, 78px);
-
+    font-size: clamp(42px, 7vw, 78px);
     line-height: 0.92;
-
     letter-spacing: -5px;
 
     margin-bottom: 22px;
@@ -193,7 +171,6 @@ nav a:hover {
     color: #555;
 
     font-size: 17px;
-
     line-height: 1.7;
 }
 
@@ -203,15 +180,12 @@ nav a:hover {
     padding: 15px 30px;
 
     border: none;
-
     border-radius: 30px;
 
     background: #171717;
-
     color: white;
 
     font-size: 14px;
-
     font-weight: 800;
 
     cursor: pointer;
@@ -221,23 +195,18 @@ nav a:hover {
 
 .hero button:hover {
     background: #e87535;
-
     transform: translateY(-3px);
-
-    box-shadow:
-        0 10px 25px rgba(0,0,0,0.15);
 }
 
 
-/* =====================================================
+/* =========================
    CATEGORIES
-===================================================== */
+========================= */
 
 .categories {
     max-width: 1200px;
 
     margin: 45px auto 25px;
-
     padding: 0 20px;
 }
 
@@ -245,28 +214,22 @@ nav a:hover {
     margin-bottom: 18px;
 
     font-size: 30px;
-
     letter-spacing: -1px;
 }
 
 .category-buttons {
     display: flex;
-
     flex-wrap: wrap;
-
     gap: 10px;
 }
 
 .category-buttons button {
-    border: 1px solid #ddd8cd;
-
-    background: white;
-
     padding: 12px 21px;
 
+    border: 1px solid #ddd8cd;
     border-radius: 25px;
 
-    color: #171717;
+    background: white;
 
     font-weight: 700;
 
@@ -277,78 +240,69 @@ nav a:hover {
 
 .category-buttons button:hover {
     border-color: #e87535;
-
     transform: translateY(-2px);
 }
 
 .category-buttons button.active {
     background: #e87535;
-
-    border-color: #e87535;
-
     color: white;
+    border-color: #e87535;
 }
 
 
-/* =====================================================
-   PRODUCTS SECTION
-===================================================== */
+/* =========================
+   PRODUCTS
+========================= */
 
 .products {
     max-width: 1200px;
 
     margin: 35px auto 80px;
-
     padding: 0 20px;
 }
 
 .product-grid {
     display: grid;
 
-    grid-template-columns:
-        repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(3, minmax(0, 1fr));
 
     gap: 22px;
 }
 
 
-/* =====================================================
+/* =========================
    PRODUCT CARD
-===================================================== */
+========================= */
 
 .product {
     min-width: 0;
 
+    overflow: hidden;
+
     background: white;
 
     border: 1px solid #e7e3da;
-
     border-radius: 20px;
 
-    overflow: hidden;
-
-    transition:
-        transform 0.25s ease,
-        box-shadow 0.25s ease;
+    transition: 0.3s ease;
 }
 
 .product:hover {
-    transform: translateY(-7px);
+    transform: translateY(-6px);
 
     box-shadow:
         0 18px 40px rgba(40,35,25,0.10);
 }
 
 
-/* =====================================================
-   POSTER IMAGE
-===================================================== */
+/* =========================
+   PRODUCT IMAGE
+========================= */
 
 .product-image {
     position: relative;
 
     width: 100%;
-
     aspect-ratio: 3 / 4;
 
     overflow: hidden;
@@ -366,8 +320,7 @@ nav a:hover {
 
     object-fit: cover;
 
-    transition:
-        transform 0.4s ease;
+    transition: transform 0.4s ease;
 }
 
 .product:hover .product-image img {
@@ -375,38 +328,34 @@ nav a:hover {
 }
 
 
-/* Small visual hint — NOT a button */
+/* TAP TO PREVIEW */
 
 .product-image::after {
-    content: "TAP TO VIEW";
+    content: "TAP TO PREVIEW";
 
     position: absolute;
 
     left: 50%;
     bottom: 12px;
 
-    transform:
-        translateX(-50%);
+    transform: translateX(-50%);
 
-    padding: 7px 12px;
+    padding: 7px 11px;
 
     border-radius: 20px;
 
     background: rgba(0,0,0,0.72);
-
     color: white;
 
     font-size: 9px;
-
     font-weight: 800;
-
     letter-spacing: 0.5px;
 
     opacity: 0;
 
-    pointer-events: none;
-
     transition: 0.2s;
+
+    pointer-events: none;
 }
 
 .product-image:hover::after {
@@ -414,16 +363,16 @@ nav a:hover {
 }
 
 
-/* =====================================================
-   PRODUCT INFORMATION
-===================================================== */
+/* =========================
+   PRODUCT INFO
+========================= */
 
 .product-info {
     padding: 18px;
 }
 
 .product-info h3 {
-    margin-bottom: 8px;
+    margin-bottom: 7px;
 
     font-size: 18px;
 }
@@ -432,17 +381,14 @@ nav a:hover {
     display: inline-block;
 
     margin-bottom: 13px;
-
     padding: 5px 9px;
 
     border-radius: 20px;
 
     background: #edf4f9;
-
     color: #528bbe;
 
     font-size: 11px;
-
     font-weight: 700;
 }
 
@@ -450,35 +396,27 @@ nav a:hover {
     margin-bottom: 15px;
 
     font-size: 18px;
-
     font-weight: 800;
 }
 
 
-/* =====================================================
+/* =========================
    PRODUCT BUTTONS
-===================================================== */
+========================= */
 
 .product-buttons {
-    display: grid;
-
-    grid-template-columns:
-        1fr 1fr;
-
+    display: flex;
     gap: 8px;
 }
 
 .buy-btn,
 .add-cart-btn {
-    width: 100%;
+    flex: 1;
 
     padding: 13px 8px;
 
     border: none;
-
     border-radius: 11px;
-
-    font-size: 12px;
 
     font-weight: 800;
 
@@ -489,50 +427,43 @@ nav a:hover {
 
 .buy-btn {
     background: #171717;
-
     color: white;
 }
 
 .buy-btn:hover {
     background: #e87535;
-
     transform: translateY(-2px);
 }
 
 .add-cart-btn {
     background: #f1f0eb;
-
     color: #171717;
 }
 
 .add-cart-btn:hover {
     background: #e87535;
-
     color: white;
-
     transform: translateY(-2px);
 }
 
 
-/* =====================================================
-   PREVIEW OVERLAY
-===================================================== */
+/* =========================
+   PREVIEW
+========================= */
 
 .preview-overlay {
     position: fixed;
-
     inset: 0;
 
     z-index: 2000;
 
     display: none;
-
     align-items: center;
     justify-content: center;
 
     padding: 20px;
 
-    background: rgba(0,0,0,0.82);
+    background: rgba(0,0,0,0.78);
 
     backdrop-filter: blur(8px);
 }
@@ -544,21 +475,19 @@ nav a:hover {
 .preview-box {
     position: relative;
 
-    display: flex;
+    max-width: 90vw;
+    max-height: 90vh;
 
+    display: flex;
     align-items: center;
     justify-content: center;
-
-    width: min(90vw, 700px);
-
-    height: min(90vh, 900px);
 }
 
 .preview-box img {
     display: block;
 
-    max-width: 100%;
-    max-height: 100%;
+    max-width: 90vw;
+    max-height: 85vh;
 
     width: auto;
     height: auto;
@@ -583,31 +512,23 @@ nav a:hover {
     height: 40px;
 
     border: none;
-
     border-radius: 50%;
 
     background: white;
-
     color: #171717;
 
     font-size: 25px;
 
-    line-height: 40px;
-
     cursor: pointer;
-
-    box-shadow:
-        0 5px 20px rgba(0,0,0,0.25);
 }
 
 
-/* =====================================================
-   CART OVERLAY
-===================================================== */
+/* =========================
+   CART
+========================= */
 
 .cart-overlay {
     position: fixed;
-
     inset: 0;
 
     z-index: 1500;
@@ -626,8 +547,8 @@ nav a:hover {
 }
 
 .cart-box {
-    width: min(430px, 100%);
-
+    width: 100%;
+    max-width: 430px;
     height: 100%;
 
     padding: 25px;
@@ -638,28 +559,10 @@ nav a:hover {
 
     box-shadow:
         -15px 0 50px rgba(0,0,0,0.18);
-
-    animation:
-        cartAppear 0.2s ease;
-}
-
-@keyframes cartAppear {
-
-    from {
-        opacity: 0;
-        transform: translateX(30px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
-
 }
 
 .cart-header {
     display: flex;
-
     align-items: center;
     justify-content: space-between;
 
@@ -675,7 +578,6 @@ nav a:hover {
     height: 36px;
 
     border: none;
-
     border-radius: 50%;
 
     background: #f1f0eb;
@@ -685,14 +587,8 @@ nav a:hover {
     cursor: pointer;
 }
 
-
-/* =====================================================
-   CART ITEMS
-===================================================== */
-
 .cart-item {
     display: flex;
-
     align-items: center;
 
     gap: 12px;
@@ -703,8 +599,6 @@ nav a:hover {
 }
 
 .cart-item img {
-    flex-shrink: 0;
-
     width: 65px;
     height: 82px;
 
@@ -717,7 +611,6 @@ nav a:hover {
 
 .cart-item-info {
     flex: 1;
-
     min-width: 0;
 }
 
@@ -737,9 +630,7 @@ nav a:hover {
 
 .cart-quantity {
     display: flex;
-
     align-items: center;
-
     gap: 9px;
 }
 
@@ -748,11 +639,9 @@ nav a:hover {
     height: 27px;
 
     border: none;
-
     border-radius: 50%;
 
     background: #171717;
-
     color: white;
 
     font-size: 16px;
@@ -764,13 +653,11 @@ nav a:hover {
     margin-top: 5px;
 
     border: none;
-
     background: transparent;
 
     color: #e87535;
 
     font-size: 12px;
-
     font-weight: 700;
 
     cursor: pointer;
@@ -786,13 +673,11 @@ nav a:hover {
 
 .cart-total {
     margin-top: 25px;
-
     padding-top: 20px;
 
     border-top: 1px solid #eee;
 
     font-size: 21px;
-
     font-weight: 900;
 }
 
@@ -800,44 +685,35 @@ nav a:hover {
     width: 100%;
 
     margin-top: 15px;
-
     padding: 14px;
 
     border: none;
-
     border-radius: 12px;
 
     background: #171717;
-
     color: white;
 
     font-weight: 800;
 
     cursor: pointer;
-
-    transition: 0.2s;
 }
 
 .cart-whatsapp:hover {
     background: #e87535;
-
-    transform: translateY(-2px);
 }
 
 
-/* =====================================================
-   BUY NOW OVERLAY
-===================================================== */
+/* =========================
+   ORDER POPUP
+========================= */
 
 .order-overlay {
     position: fixed;
-
     inset: 0;
 
     z-index: 1800;
 
     display: none;
-
     align-items: center;
     justify-content: center;
 
@@ -855,7 +731,8 @@ nav a:hover {
 .order-box {
     position: relative;
 
-    width: min(420px, 100%);
+    width: 100%;
+    max-width: 420px;
 
     padding: 30px;
 
@@ -865,23 +742,6 @@ nav a:hover {
 
     box-shadow:
         0 25px 70px rgba(0,0,0,0.25);
-
-    animation:
-        orderAppear 0.2s ease;
-}
-
-@keyframes orderAppear {
-
-    from {
-        opacity: 0;
-        transform: scale(0.97) translateY(15px);
-    }
-
-    to {
-        opacity: 1;
-        transform: scale(1) translateY(0);
-    }
-
 }
 
 .close-order {
@@ -894,7 +754,6 @@ nav a:hover {
     height: 35px;
 
     border: none;
-
     border-radius: 50%;
 
     background: #f1f0eb;
@@ -914,7 +773,6 @@ nav a:hover {
     margin-bottom: 7px;
 
     font-size: 20px;
-
     font-weight: 800;
 }
 
@@ -936,7 +794,6 @@ nav a:hover {
 
 .quantity-area {
     display: flex;
-
     align-items: center;
     justify-content: space-between;
 
@@ -952,7 +809,6 @@ nav a:hover {
 
 .quantity-control {
     display: flex;
-
     align-items: center;
 
     gap: 15px;
@@ -963,11 +819,9 @@ nav a:hover {
     height: 35px;
 
     border: none;
-
     border-radius: 50%;
 
     background: #171717;
-
     color: white;
 
     font-size: 20px;
@@ -978,16 +832,15 @@ nav a:hover {
 #quantity {
     min-width: 20px;
 
-    text-align: center;
-
     font-weight: 800;
+
+    text-align: center;
 }
 
 .total {
     margin: 22px 0;
 
     font-size: 20px;
-
     font-weight: 900;
 }
 
@@ -997,37 +850,29 @@ nav a:hover {
     padding: 14px;
 
     border: none;
-
     border-radius: 12px;
 
     background: #171717;
-
     color: white;
 
     font-weight: 800;
 
     cursor: pointer;
-
-    transition: 0.2s;
 }
 
 .whatsapp-order:hover {
     background: #e87535;
-
-    transform: translateY(-2px);
 }
 
 .cancel-order {
     width: 100%;
 
     margin-top: 10px;
-
     padding: 12px;
 
     border: none;
 
     background: transparent;
-
     color: #666;
 
     font-weight: 700;
@@ -1036,16 +881,16 @@ nav a:hover {
 }
 
 
-/* =====================================================
+/* =========================
    ABOUT
-===================================================== */
+========================= */
 
 .about {
     padding: 75px 20px;
 
-    border-top: 1px solid #e0ddd5;
-
     background: #eeece5;
+
+    border-top: 1px solid #e0ddd5;
 
     text-align: center;
 }
@@ -1054,7 +899,6 @@ nav a:hover {
     margin-bottom: 15px;
 
     font-size: 38px;
-
     letter-spacing: -2px;
 }
 
@@ -1069,15 +913,14 @@ nav a:hover {
 }
 
 
-/* =====================================================
+/* =========================
    FOOTER
-===================================================== */
+========================= */
 
 footer {
     padding: 40px 20px;
 
     background: #171717;
-
     color: white;
 
     text-align: center;
@@ -1096,9 +939,9 @@ footer p {
 }
 
 
-/* =====================================================
-   TABLET
-===================================================== */
+/* =========================
+   TABLET / MOBILE
+========================= */
 
 @media (max-width: 800px) {
 
@@ -1114,16 +957,22 @@ footer p {
         font-size: 12px;
     }
 
+    .cart-button {
+        padding: 9px 11px;
+        font-size: 11px;
+    }
+
     .hero {
         margin: 20px 15px;
-
         padding: 60px 20px;
     }
 
-    .product-grid {
-        grid-template-columns:
-            repeat(2, minmax(0, 1fr));
+    .hero h1 {
+        letter-spacing: -3px;
+    }
 
+    .product-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: 13px;
     }
 
@@ -1140,21 +989,13 @@ footer p {
     }
 
     .product-buttons {
-        grid-template-columns: 1fr;
+        flex-direction: column;
     }
 
 }
 
 
-/* =====================================================
-   PHONE
-===================================================== */
-
 @media (max-width: 500px) {
-
-    header {
-        padding: 14px 4%;
-    }
 
     .logo {
         font-size: 20px;
@@ -1168,16 +1009,8 @@ footer p {
         font-size: 11px;
     }
 
-    .cart-button {
-        padding: 9px 11px;
-
-        font-size: 11px;
-    }
-
     .hero h1 {
         font-size: 45px;
-
-        letter-spacing: -3px;
     }
 
     .hero p {
@@ -1189,11 +1022,7 @@ footer p {
     }
 
     .cart-box {
-        width: 100%;
-    }
-
-    .order-box {
-        padding: 25px;
+        max-width: 100%;
     }
 
 }
@@ -1202,20 +1031,18 @@ footer p {
 
 </head>
 
-
 <body>
 
 
-<!-- =====================================================
+<!-- =========================
      HEADER
-===================================================== -->
+========================= -->
 
 <header>
 
     <div class="logo">
         POSTERS<span>BLR</span>
     </div>
-
 
     <nav>
 
@@ -1228,16 +1055,11 @@ footer p {
         </a>
 
         <button
-            type="button"
             class="cart-button"
-            onclick="openCart()"
-        >
+            onclick="openCart()">
 
             🛒 Cart
-
-            <span id="cartCount">
-                0
-            </span>
+            <span id="cartCount">0</span>
 
         </button>
 
@@ -1246,33 +1068,27 @@ footer p {
 </header>
 
 
-<!-- =====================================================
+<!-- =========================
      HERO
-===================================================== -->
+========================= -->
 
 <section class="hero">
 
     <h1>
-
         MAKE YOUR<br>
-
         <span>WALL SPEAK.</span>
-
     </h1>
 
-
     <p>
-
         Premium posters made to bring personality,
         motivation and adventure into your space.
-
     </p>
 
-
     <button
-        type="button"
-        onclick="document.getElementById('shop').scrollIntoView()"
-    >
+        onclick="
+        document
+        .getElementById('shop')
+        .scrollIntoView()">
 
         EXPLORE POSTERS
 
@@ -1281,57 +1097,48 @@ footer p {
 </section>
 
 
-<!-- =====================================================
+<!-- =========================
      CATEGORIES
-===================================================== -->
+========================= -->
 
 <section
     class="categories"
-    id="shop"
->
+    id="shop">
 
     <h2>
         Shop by category
     </h2>
 
-
     <div class="category-buttons">
 
         <button
-            type="button"
             class="active"
-            onclick="filterProducts('all', this)"
-        >
+            onclick="
+            filterProducts('all', this)">
 
             All
 
         </button>
 
-
         <button
-            type="button"
-            onclick="filterProducts('gym', this)"
-        >
+            onclick="
+            filterProducts('gym', this)">
 
             Gym Motivation
 
         </button>
 
-
         <button
-            type="button"
-            onclick="filterProducts('travel', this)"
-        >
+            onclick="
+            filterProducts('travel', this)">
 
             Travel
 
         </button>
 
-
         <button
-            type="button"
-            onclick="filterProducts('motivation', this)"
-        >
+            onclick="
+            filterProducts('motivation', this)">
 
             Motivation
 
@@ -1342,34 +1149,36 @@ footer p {
 </section>
 
 
-<!-- =====================================================
+<!-- =========================
      PRODUCTS
-===================================================== -->
+========================= -->
 
 <section class="products">
 
     <div class="product-grid">
 
 
-        <!-- GYM 1 -->
+        <!-- =====================
+             GYM 1
+        ====================== -->
 
         <div
             class="product"
-            data-category="gym"
-        >
+            data-category="gym">
 
             <div
                 class="product-image"
-                onclick="openPreview('gym1.jpg', 'NO EXCUSES')"
-            >
+                onclick="
+                openPreview(
+                    this.querySelector('img').src,
+                    'NO EXCUSES'
+                )">
 
                 <img
                     src="gym1.jpg"
-                    alt="NO EXCUSES poster"
-                >
+                    alt="NO EXCUSES">
 
             </div>
-
 
             <div class="product-info">
 
@@ -1377,35 +1186,32 @@ footer p {
                     NO EXCUSES
                 </h3>
 
-
                 <div class="category">
                     Gym Motivation
                 </div>
-
 
                 <div class="price">
                     ₹29
                 </div>
 
-
                 <div class="product-buttons">
 
                     <button
-                        type="button"
                         class="add-cart-btn"
-                        onclick="addToCart('NO EXCUSES', 'gym1.jpg')"
-                    >
+                        onclick="
+                        addToCart(
+                            'NO EXCUSES',
+                            'gym1.jpg'
+                        )">
 
                         ADD TO CART
 
                     </button>
 
-
                     <button
-                        type="button"
                         class="buy-btn"
-                        onclick="buyProduct('NO EXCUSES')"
-                    >
+                        onclick="
+                        buyProduct('NO EXCUSES')">
 
                         BUY NOW
 
@@ -1418,25 +1224,27 @@ footer p {
         </div>
 
 
-        <!-- GYM 2 -->
+        <!-- =====================
+             GYM 2
+        ====================== -->
 
         <div
             class="product"
-            data-category="gym"
-        >
+            data-category="gym">
 
             <div
                 class="product-image"
-                onclick="openPreview('gym2.jpg', 'DISCIPLINE')"
-            >
+                onclick="
+                openPreview(
+                    this.querySelector('img').src,
+                    'DISCIPLINE'
+                )">
 
                 <img
                     src="gym2.jpg"
-                    alt="DISCIPLINE poster"
-                >
+                    alt="DISCIPLINE">
 
             </div>
-
 
             <div class="product-info">
 
@@ -1444,26 +1252,207 @@ footer p {
                     DISCIPLINE
                 </h3>
 
-
                 <div class="category">
                     Gym Motivation
                 </div>
 
+                <div class="price">
+                    ₹29
+                </div>
+
+                <div class="product-buttons">
+
+                    <button
+                        class="add-cart-btn"
+                        onclick="
+                        addToCart(
+                            'DISCIPLINE',
+                            'gym2.jpg'
+                        )">
+
+                        ADD TO CART
+
+                    </button>
+
+                    <button
+                        class="buy-btn"
+                        onclick="
+                        buyProduct('DISCIPLINE')">
+
+                        BUY NOW
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- =====================
+             TRAVEL 1
+        ====================== -->
+
+        <div
+            class="product"
+            data-category="travel">
+
+            <div
+                class="product-image"
+                onclick="
+                openPreview(
+                    this.querySelector('img').src,
+                    'WANDER'
+                )">
+
+                <img
+                    src="travel1.jpg"
+                    alt="WANDER">
+
+            </div>
+
+            <div class="product-info">
+
+                <h3>
+                    WANDER
+                </h3>
+
+                <div class="category">
+                    Travel
+                </div>
 
                 <div class="price">
                     ₹29
-        <!-- =========================
-     PREVIEW POPUP
+                </div>
+
+                <div class="product-buttons">
+
+                    <button
+                        class="add-cart-btn"
+                        onclick="
+                        addToCart(
+                            'WANDER',
+                            'travel1.jpg'
+                        )">
+
+                        ADD TO CART
+
+                    </button>
+
+                    <button
+                        class="buy-btn"
+                        onclick="
+                        buyProduct('WANDER')">
+
+                        BUY NOW
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- =====================
+             TRAVEL 2
+        ====================== -->
+
+        <div
+            class="product"
+            data-category="travel">
+
+            <div
+                class="product-image"
+                onclick="
+                openPreview(
+                    this.querySelector('img').src,
+                    'EXPLORE'
+                )">
+
+                <img
+                      </div>
+
+    </div>
+
+
+    <!-- =========================
+         MOTIVATION 2
+    ========================= -->
+
+    <div class="product" data-category="motivation">
+
+        <div
+            class="product-image"
+            onclick="openPreview(this.querySelector('img').src, 'DREAM BIG')">
+
+            <img
+                src="motivation2.jpg"
+                alt="DREAM BIG">
+
+        </div>
+
+        <div class="product-info">
+
+            <h3>DREAM BIG</h3>
+
+            <div class="category">
+                Motivation
+            </div>
+
+            <div class="price">
+                ₹29
+            </div>
+
+            <div class="product-buttons">
+
+                <button
+                    class="add-cart-btn"
+                    onclick="addToCart('DREAM BIG', 'motivation2.jpg')">
+
+                    ADD TO CART
+
+                </button>
+
+                <button
+                    class="buy-btn"
+                    onclick="buyProduct('DREAM BIG')">
+
+                    BUY NOW
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     PREVIEW
 ========================= -->
 
-<div class="preview-overlay" id="previewOverlay">
+<div
+    class="preview-overlay"
+    id="previewOverlay"
+    onclick="closePreview(event)">
 
     <div class="preview-box">
 
         <button
             class="close-preview"
             onclick="closePreview()">
+
             ×
+
         </button>
 
         <img
@@ -1477,12 +1466,17 @@ footer p {
 
 
 <!-- =========================
-     CART POPUP
+     CART
 ========================= -->
 
-<div class="cart-overlay" id="cartOverlay">
+<div
+    class="cart-overlay"
+    id="cartOverlay"
+    onclick="closeCart(event)">
 
-    <div class="cart-box">
+    <div
+        class="cart-box"
+        onclick="event.stopPropagation()">
 
         <div class="cart-header">
 
@@ -1491,18 +1485,31 @@ footer p {
             <button
                 class="close-cart"
                 onclick="closeCart()">
+
                 ×
+
             </button>
 
         </div>
 
-        <div id="cartItems"></div>
+
+        <div id="cartItems">
+
+            <div class="empty-cart">
+                Your cart is empty.
+            </div>
+
+        </div>
+
 
         <div
             class="cart-total"
             id="cartTotal">
+
             Total: ₹0
+
         </div>
+
 
         <button
             class="cart-whatsapp"
@@ -1518,62 +1525,91 @@ footer p {
 
 
 <!-- =========================
-     BUY NOW POPUP
+     BUY NOW
 ========================= -->
 
-<div class="order-overlay" id="orderOverlay">
+<div
+    class="order-overlay"
+    id="orderOverlay"
+    onclick="closeOrder()">
 
-    <div class="order-box">
+    <div
+        class="order-box"
+        onclick="event.stopPropagation()">
 
         <button
             class="close-order"
             onclick="closeOrder()">
+
             ×
+
         </button>
 
-        <h2>Order Poster</h2>
+
+        <h2>
+            Order Poster
+        </h2>
+
 
         <div
             class="selected-poster"
             id="selectedPoster">
+
             Poster
+
         </div>
+
 
         <div class="order-price">
             ₹29 per poster
         </div>
 
+
         <div class="poster-size">
             Size: 44.5 × 30 cm
         </div>
 
+
         <div class="quantity-area">
 
-            <span>Quantity</span>
+            <span>
+                Quantity
+            </span>
+
 
             <div class="quantity-control">
 
                 <button
                     onclick="changeQuantity(-1)">
+
                     −
+
                 </button>
+
 
                 <span id="quantity">
                     1
                 </span>
 
+
                 <button
                     onclick="changeQuantity(1)">
+
                     +
+
                 </button>
 
             </div>
 
         </div>
 
+
         <div class="total">
+
             Total: ₹<span id="totalPrice">29</span>
+
         </div>
+
 
         <button
             class="whatsapp-order"
@@ -1582,6 +1618,7 @@ footer p {
             ORDER ON WHATSAPP
 
         </button>
+
 
         <button
             class="cancel-order"
@@ -1604,7 +1641,9 @@ footer p {
     class="about"
     id="about">
 
-    <h2>POSTERSBLR</h2>
+    <h2>
+        POSTERSBLR
+    </h2>
 
     <p>
         Your walls should say something about you.
@@ -1621,10 +1660,13 @@ footer p {
 
 <footer>
 
-    <strong>POSTERSBLR</strong>
+    <strong>
+        POSTERSBLR
+    </strong>
 
     <p>
-        © 2026 POSTERSBLR. All rights reserved.
+        © 2026 POSTERSBLR.
+        All rights reserved.
     </p>
 
 </footer>
@@ -1650,11 +1692,20 @@ function filterProducts(category, button) {
             ".category-buttons button"
         );
 
+
     buttons.forEach(function(btn) {
+
         btn.classList.remove("active");
+
     });
 
-    button.classList.add("active");
+
+    if (button) {
+
+        button.classList.add("active");
+
+    }
+
 
     products.forEach(function(product) {
 
@@ -1678,7 +1729,6 @@ function filterProducts(category, button) {
 
 /* =========================
    POSTER PREVIEW
-   TAP THE IMAGE
 ========================= */
 
 function openPreview(imageSrc, posterName) {
@@ -1689,14 +1739,15 @@ function openPreview(imageSrc, posterName) {
     const image =
         document.getElementById("previewImage");
 
+
     if (!overlay || !image) return;
 
+
     image.src = imageSrc;
+
     image.alt = posterName;
 
     overlay.classList.add("show");
-
-    document.body.style.overflow = "hidden";
 
 }
 
@@ -1705,23 +1756,23 @@ function openPreview(imageSrc, posterName) {
    CLOSE PREVIEW
 ========================= */
 
-function closePreview() {
+function closePreview(event) {
 
     const overlay =
         document.getElementById("previewOverlay");
 
-    const image =
-        document.getElementById("previewImage");
 
     if (!overlay) return;
 
-    overlay.classList.remove("show");
 
-    if (image) {
-        image.src = "";
+    if (
+        !event ||
+        event.target === overlay
+    ) {
+
+        overlay.classList.remove("show");
+
     }
-
-    document.body.style.overflow = "";
 
 }
 
@@ -1733,14 +1784,19 @@ function closePreview() {
 let cart = [];
 
 
-/* ADD TO CART */
+/* =========================
+   ADD TO CART
+========================= */
 
 function addToCart(productName, imageSrc) {
 
     const existingItem =
         cart.find(function(item) {
+
             return item.name === productName;
+
         });
+
 
     if (existingItem) {
 
@@ -1762,20 +1818,24 @@ function addToCart(productName, imageSrc) {
 
     }
 
+
     updateCart();
+
 
     const cartButton =
         document.querySelector(".cart-button");
+
 
     if (cartButton) {
 
         cartButton.style.transform =
             "scale(1.08)";
 
+
         setTimeout(function() {
 
             cartButton.style.transform =
-                "";
+                "scale(1)";
 
         }, 180);
 
@@ -1799,12 +1859,18 @@ function updateCart() {
     const cartTotal =
         document.getElementById("cartTotal");
 
-    if (!cartItems || !cartCount || !cartTotal) {
-        return;
-    }
+
+    if (
+        !cartItems ||
+        !cartCount ||
+        !cartTotal
+    ) return;
+
 
     let totalItems = 0;
+
     let totalPrice = 0;
+
 
     cart.forEach(function(item) {
 
@@ -1815,8 +1881,10 @@ function updateCart() {
 
     });
 
+
     cartCount.textContent =
         totalItems;
+
 
     cartTotal.textContent =
         "Total: ₹" + totalPrice;
@@ -1825,9 +1893,11 @@ function updateCart() {
     if (cart.length === 0) {
 
         cartItems.innerHTML = `
+
             <div class="empty-cart">
                 Your cart is empty.
             </div>
+
         `;
 
         return;
@@ -1842,6 +1912,7 @@ function updateCart() {
 
         const subtotal =
             item.price * item.quantity;
+
 
         cartItems.innerHTML += `
 
@@ -1859,19 +1930,15 @@ function updateCart() {
 
                     <div class="cart-item-price">
 
-                        ₹${item.price} each ·
-                        ₹${subtotal}
+                        ₹${item.price} each
+                        · ₹${subtotal}
 
                     </div>
 
                     <div class="cart-quantity">
 
                         <button
-                            onclick="
-                            changeCartQuantity(
-                                ${index},
-                                -1
-                            )">
+                            onclick="changeCartQuantity(${index}, -1)">
 
                             −
 
@@ -1882,11 +1949,7 @@ function updateCart() {
                         </span>
 
                         <button
-                            onclick="
-                            changeCartQuantity(
-                                ${index},
-                                1
-                            )">
+                            onclick="changeCartQuantity(${index}, 1)">
 
                             +
 
@@ -1896,8 +1959,7 @@ function updateCart() {
 
                     <button
                         class="remove-cart"
-                        onclick="
-                        removeFromCart(${index})">
+                        onclick="removeFromCart(${index})">
 
                         REMOVE
 
@@ -1922,13 +1984,16 @@ function changeCartQuantity(index, amount) {
 
     if (!cart[index]) return;
 
+
     cart[index].quantity += amount;
+
 
     if (cart[index].quantity <= 0) {
 
         cart.splice(index, 1);
 
     }
+
 
     updateCart();
 
@@ -1943,6 +2008,7 @@ function removeFromCart(index) {
 
     if (!cart[index]) return;
 
+
     cart.splice(index, 1);
 
     updateCart();
@@ -1956,16 +2022,18 @@ function removeFromCart(index) {
 
 function openCart() {
 
+    updateCart();
+
+
     const overlay =
         document.getElementById("cartOverlay");
 
-    if (!overlay) return;
 
-    updateCart();
+    if (overlay) {
 
-    overlay.classList.add("show");
+        overlay.classList.add("show");
 
-    document.body.style.overflow = "hidden";
+    }
 
 }
 
@@ -1974,16 +2042,23 @@ function openCart() {
    CLOSE CART
 ========================= */
 
-function closeCart() {
+function closeCart(event) {
 
     const overlay =
         document.getElementById("cartOverlay");
 
+
     if (!overlay) return;
 
-    overlay.classList.remove("show");
 
-    document.body.style.overflow = "";
+    if (
+        !event ||
+        event.target === overlay
+    ) {
+
+        overlay.classList.remove("show");
+
+    }
 
 }
 
@@ -2002,8 +2077,10 @@ function orderCartOnWhatsApp() {
 
     }
 
+
     const phoneNumber =
         "916366788554";
+
 
     let message =
 `Hi POSTERSBLR!
@@ -2011,6 +2088,7 @@ function orderCartOnWhatsApp() {
 I'd like to place an order.
 
 `;
+
 
     let total = 0;
 
@@ -2020,7 +2098,9 @@ I'd like to place an order.
         const subtotal =
             item.price * item.quantity;
 
+
         total += subtotal;
+
 
         message +=
 `Poster: ${item.name}
@@ -2058,6 +2138,7 @@ Please let me know the delivery details.`;
 ========================= */
 
 let selectedProduct = "";
+
 let quantity = 1;
 
 
@@ -2066,6 +2147,7 @@ function buyProduct(productName) {
     selectedProduct =
         productName;
 
+
     quantity = 1;
 
 
@@ -2073,6 +2155,7 @@ function buyProduct(productName) {
         document.getElementById(
             "selectedPoster"
         );
+
 
     if (selectedPoster) {
 
@@ -2090,12 +2173,10 @@ function buyProduct(productName) {
             "orderOverlay"
         );
 
+
     if (overlay) {
 
         overlay.classList.add("show");
-
-        document.body.style.overflow =
-            "hidden";
 
     }
 
@@ -2103,18 +2184,20 @@ function buyProduct(productName) {
 
 
 /* =========================
-   BUY NOW QUANTITY
+   ORDER QUANTITY
 ========================= */
 
 function changeQuantity(amount) {
 
     quantity += amount;
 
+
     if (quantity < 1) {
 
         quantity = 1;
 
     }
+
 
     updateOrderTotal();
 
@@ -2135,6 +2218,7 @@ function updateOrderTotal() {
         document.getElementById(
             "quantity"
         );
+
 
     const totalElement =
         document.getElementById(
@@ -2161,7 +2245,7 @@ function updateOrderTotal() {
 
 
 /* =========================
-   CLOSE BUY NOW
+   CLOSE ORDER
 ========================= */
 
 function closeOrder() {
@@ -2171,11 +2255,12 @@ function closeOrder() {
             "orderOverlay"
         );
 
-    if (!overlay) return;
 
-    overlay.classList.remove("show");
+    if (overlay) {
 
-    document.body.style.overflow = "";
+        overlay.classList.remove("show");
+
+    }
 
 }
 
@@ -2188,8 +2273,10 @@ function orderOnWhatsApp() {
 
     if (!selectedProduct) return;
 
+
     const phoneNumber =
         "916366788554";
+
 
     const total =
         quantity * 29;
@@ -2223,52 +2310,6 @@ Please let me know the delivery details.`;
 
 
 /* =========================
-   CLICK OUTSIDE POPUPS
-========================= */
-
-document.getElementById(
-    "previewOverlay"
-).addEventListener(
-    "click",
-    function(event) {
-
-        if (event.target === this) {
-            closePreview();
-        }
-
-    }
-);
-
-
-document.getElementById(
-    "cartOverlay"
-).addEventListener(
-    "click",
-    function(event) {
-
-        if (event.target === this) {
-            closeCart();
-        }
-
-    }
-);
-
-
-document.getElementById(
-    "orderOverlay"
-).addEventListener(
-    "click",
-    function(event) {
-
-        if (event.target === this) {
-            closeOrder();
-        }
-
-    }
-);
-
-
-/* =========================
    ESCAPE KEY
 ========================= */
 
@@ -2276,20 +2317,53 @@ document.addEventListener(
     "keydown",
     function(event) {
 
-        if (event.key !== "Escape") {
-            return;
+        if (event.key !== "Escape") return;
+
+
+        const preview =
+            document.getElementById(
+                "previewOverlay"
+            );
+
+
+        const cartOverlay =
+            document.getElementById(
+                "cartOverlay"
+            );
+
+
+        const orderOverlay =
+            document.getElementById(
+                "orderOverlay"
+            );
+
+
+        if (preview) {
+
+            preview.classList.remove("show");
+
         }
 
-        closePreview();
-        closeCart();
-        closeOrder();
+
+        if (cartOverlay) {
+
+            cartOverlay.classList.remove("show");
+
+        }
+
+
+        if (orderOverlay) {
+
+            orderOverlay.classList.remove("show");
+
+        }
 
     }
 );
 
 
 /* =========================
-   START
+   START CART
 ========================= */
 
 updateCart();
@@ -2297,4 +2371,4 @@ updateCart();
 </script>
 
 </body>
-            </html>
+    </html>
